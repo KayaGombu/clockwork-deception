@@ -7,10 +7,9 @@
 size = Vector2(131, 132)
 
 [node name="Enemy" type="CharacterBody2D"]
+position = Vector2(273, 224)
 script = ExtResource("1_wofkh")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(356, -4)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(11.5, 4)

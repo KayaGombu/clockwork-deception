@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=5 format=3 uid="uid://coc26dgpj7wd0"]
+
+[ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
+[ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60xxu"]
+size = Vector2(55, 50)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mf4t7"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a42v6")]
+position = Vector2(146, 108)
+
+[node name="Enemy" parent="." instance=ExtResource("2_d6av0")]
+position = Vector2(141, 257)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(353, 231)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(17.5, 15)
+shape = SubResource("RectangleShape2D_60xxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+position = Vector2(18.5, 16)
+scale = Vector2(57, 52)
+texture = SubResource("CanvasTexture_mf4t7")
+
+[connection signal="player_spotted" from="Enemy" to="Player" method="_on_enemy_player_spotted"]

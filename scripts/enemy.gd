@@ -1,25 +1,31 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var vision_cone_angle = deg_to_rad(100.0)
+var angle_between_rays = deg_to_rad(5.0)
+var rayList = []
 
+signal player_spotted
+func _ready() -> void:
+
+	gen_raycasts()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	$"Icon".set_modulate(Color(1,1,1,1))
+	for ray in rayList:
+		if ray.is_colliding() and ray.get_collider() is Player:
+			$"Icon".set_modulate(Color(100,1,1,1))
+			player_spotted.emit()
+		
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+func gen_raycasts() -> void:
+	var raycount = 4
+	for i in raycount:
+		var ray = RayCast2D.new()
+		var angle = angle_between_rays*(i-raycount/2.0)
+		ray.target_position = Vector2.RIGHT.rotated(angle)*360
+		rayList.append(ray)
+		add_child(ray)
+		ray.enabled = true
+		
+	
