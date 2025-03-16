@@ -13,12 +13,15 @@ size = Vector2(55, 50)
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
 position = Vector2(146, 108)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player", "walls") instance=ExtResource("2_d6av0")]
 position = Vector2(141, 257)
 player = NodePath("../Player")
+walls = NodePath("../Wall")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(353, 231)
+collision_layer = 2
+collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]

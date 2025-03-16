@@ -1,13 +1,15 @@
 extends CharacterBody2D
 @export var player: CharacterBody2D
+@export var walls: StaticBody2D
 @export var SPEED: int = 50
 @export var CHASE_SPEED: int = 100
 @export var ACCELERATION: int = 160
 
 
-
+@onready var space_state = get_world_2d().direct_space_state
 @onready var sprite: Sprite2D = $Icon
 @onready var area: Area2D = $Area2D
+@onready var vision: Polygon2D = $Area2D/Polygon2D
 @onready var collision: CollisionPolygon2D = $Area2D/CollisionPolygon2D
 @onready var ray_cast: RayCast2D = $Icon/RayCast2D
 @onready var ray_cast2: RayCast2D = $Icon/RayCast2D2
@@ -17,6 +19,8 @@ extends CharacterBody2D
 var direction: Vector2
 var right_bounds: Vector2
 var left_bounds: Vector2
+var FOV_length := 190
+var vision_angle := 35
 
 enum States{
 	WANDER,
@@ -24,26 +28,35 @@ enum States{
 }
 
 var current_state = States.WANDER
-
+var vision_points = []
 func _ready():
 	left_bounds = self.position+Vector2(-120,0)
 	right_bounds = self.position+Vector2(120,0)
 	area.connect("body_entered",Callable(self, "_on_area_2d_body_entered"))
 	area.connect("body_exited",Callable(self, "_on_area_2d_body_exited"))
+	
+	
 func _physics_process(delta: float) -> void:
 	movement(delta)
 	change_direction()
 	look_for_player()
-	
+	update_vision()
 func look_for_player():
 	for ray in [ray_cast,ray_cast2,ray_cast3]:
+		ray.force_raycast_update()
 		if ray.is_colliding():
 			var collider = ray_cast.get_collider()
-		
-			if collider == player:
-				chase_player()
-			elif current_state == States.CHASE:
+			if collider == null:
+				continue
+			if collider == walls:
+				print("Wall detected, stopping chase!")
+				
 				stop_chase()
+				return
+			elif collider == player:
+				print("player detected, chasing !")
+				chase_player()
+				return
 	
 	stop_chase()
 		
@@ -73,9 +86,9 @@ func change_direction() -> void:
 				direction = Vector2(1,0)
 			else:
 				sprite.flip_h = false
-				ray_cast.target_position = Vector2(-200,0)
-				ray_cast2.target_position = Vector2(-200,20)
-				ray_cast3.target_position = Vector2(-200,-20)
+				ray_cast.target_position = Vector2(-190,0)
+				ray_cast2.target_position = Vector2(-190,20)
+				ray_cast3.target_position = Vector2(-190,-20)
 				flip_cone(true)
 		else:
 			
@@ -83,9 +96,9 @@ func change_direction() -> void:
 				direction = Vector2(-1,0)
 			else:
 				sprite.flip_h = true
-				ray_cast.target_position = Vector2(200,0)
-				ray_cast2.target_position = Vector2(200,20)
-				ray_cast3.target_position = Vector2(200,-20)
+				ray_cast.target_position = Vector2(190,0)
+				ray_cast2.target_position = Vector2(190,20)
+				ray_cast3.target_position = Vector2(190,-20)
 				flip_cone(false)
 	else:
 		direction = (player.position - self.position).normalized()
@@ -95,19 +108,57 @@ func change_direction() -> void:
 			ray_cast.target_position = Vector2(200,0)
 			ray_cast2.target_position = Vector2(200,30)
 			ray_cast3.target_position = Vector2(200,-30)
-			flip_cone(true)
+			flip_cone(false)
 		else: 
 			sprite.flip_h = false
 			ray_cast.target_position = Vector2(-200,0)
 			ray_cast2.target_position = Vector2(-200,20)
 			ray_cast3.target_position = Vector2(-200,-20)
-			flip_cone(false)
+			flip_cone(true)
+	update_vision()
 func flip_cone(is_facing_right: bool):
 	var scale =1 if is_facing_right else -1
 	area.scale.x = scale
-	for i in range(collision.polygon.size()):
-		collision.polygon[i].x *=1
+	vision.scale.x = scale 
 	
+func update_vision():
+	var current = $Icon.position
+	var pos = current
+	vision_points.clear()
+	vision_points.append(pos)
+	
+	var pointLeft = pos +Vector2(FOV_length,vision_angle)
+	var pointright = pos +Vector2(FOV_length,-vision_angle)
+	
+	vision_points.append(pointLeft)
+	vision_points.append(pointright)
+	set_target_area(PackedVector2Array(vision_points))
+#func get_FOV(from: Vector2, radius: float, width: float, angle: float) ->PackedVector2Array:
+	#var points = PackedVector2Array()
+	#var startingAngle = angle - width/2
+	#var endAngle = angle+width/2
+	#
+	#while startingAngle< endAngle:
+		#var offset = Vector2(radius,0).rotated(startingAngle)
+		#var to = from +offset
+		#var query = PhysicsRayQueryParameters2D.create(from, to)
+		#query.collide_with_bodies = true
+		#query.collide_with_areas = false  # Change to `true` if you want it to detect areas too
+		#var result = space_state.intersect_ray(query)
+		#if result:
+			#points.append(result.position)
+		#else:
+			#points.append(to)
+		#startingAngle +=FOV_length
+	#return points
+#func draw_target():
+	#var directionAngle = direction.angle()
+	#var vision_points = get_FOV($Icon.global_position, 250, 60, directionAngle)
+	#set_target_area(PackedVector2Array(vision_points))
+func set_target_area(points: PackedVector2Array):
+	vision.polygon = points
+func clear_target_area():
+	set_target_area(PackedVector2Array())
 #const SPEED = 300.0
 
 #var vision_cone_angle = deg_to_rad(100.0)
