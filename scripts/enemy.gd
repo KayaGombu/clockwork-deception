@@ -132,7 +132,7 @@ func update_vision():
 	
 	vision_points.append(pointLeft)
 	vision_points.append(pointright)
-	set_target_area(PackedVector2Array(vision_points))
+	#set_target_area(PackedVector2Array(vision_points))
 #func get_FOV(from: Vector2, radius: float, width: float, angle: float) ->PackedVector2Array:
 	#var points = PackedVector2Array()
 	#var startingAngle = angle - width/2
@@ -155,10 +155,10 @@ func update_vision():
 	#var directionAngle = direction.angle()
 	#var vision_points = get_FOV($Icon.global_position, 250, 60, directionAngle)
 	#set_target_area(PackedVector2Array(vision_points))
-func set_target_area(points: PackedVector2Array):
-	vision.polygon = points
-func clear_target_area():
-	set_target_area(PackedVector2Array())
+#func set_target_area(points: PackedVector2Array):
+	#vision.polygon = points
+#func clear_target_area():
+	#set_target_area(PackedVector2Array())
 #const SPEED = 300.0
 
 #var vision_cone_angle = deg_to_rad(100.0)
