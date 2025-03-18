@@ -19,4 +19,18 @@ shape = SubResource("RectangleShape2D_uj8j3")
 position = Vector2(11, 4)
 texture = ExtResource("2_kfs2v")
 
+[node name="RayCast2D" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, 20)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, -20)
+
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
