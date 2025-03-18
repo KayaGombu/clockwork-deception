@@ -33,16 +33,15 @@ func _physics_process(delta: float) -> void:
 	look_for_player()
 	
 func look_for_player():
-	if ray_cast.is_colliding() or ray_cast2.is_colliding() or ray_cast3.is_colliding():
-		var collider = ray_cast.get_collider()
-		var collider2 = ray_cast2.get_collider()
-		var collider3 = ray_cast3.get_collider()
-		if collider == player or collider2 == player or collider3 == player:
-			chase_player()
+	for ray in sprite.get_children():
+		if ray.is_colliding():
+			if ray.get_collider() == player:
+				chase_player()
+			elif current_state == States.CHASE:
+				stop_chase()
 		elif current_state == States.CHASE:
-			stop_chase()
-	elif current_state == States.CHASE:
-		stop_chase()
+			stop_chase()		
+
 		
 func chase_player():
 	timer.stop()
@@ -88,8 +87,8 @@ func change_direction() -> void:
 		if direction.x ==1:
 			sprite.flip_h = true
 			ray_cast.target_position = Vector2(200,0)
-			ray_cast2.target_position = Vector2(200,30)
-			ray_cast3.target_position = Vector2(200,-30)
+			ray_cast2.target_position = Vector2(200,20)
+			ray_cast3.target_position = Vector2(200,-20)
 		else: 
 			sprite.flip_h = false
 			ray_cast.target_position = Vector2(-200,0)
@@ -115,15 +114,14 @@ func change_direction() -> void:
 			#player_spotted.emit()
 		#
 #
-#func gen_raycasts() -> void:
-	#var raycount = 4
-	#for i in raycount:
-		#var ray = RayCast2D.new()
-		#var angle = angle_between_rays*(i-raycount/2.0)
-		#ray.target_position = Vector2.RIGHT.rotated(angle)*360
-		#rayList.append(ray)
-		#add_child(ray)
-		#ray.enabled = true
+func gen_raycasts() -> void:
+	var raycount = 4
+	for i in raycount:
+		var ray = RayCast2D.new()
+		var angle = deg_to_rad(5.0)*(i-raycount/2.0)
+		ray.target_position = Vector2.RIGHT.rotated(angle)*360
+		add_child(ray)
+		ray.enabled = true
 		
 	
 
