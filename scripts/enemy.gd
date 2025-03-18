@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var ACCELERATION: int = 160
 
 
-@onready var space_state = get_world_2d().direct_space_state
+#@onready var space_state = get_world_2d().direct_space_state
 @onready var sprite: Sprite2D = $Icon
 @onready var area: Area2D = $Area2D
 @onready var vision: Polygon2D = $Area2D/Polygon2D
@@ -127,8 +127,8 @@ func update_vision():
 	vision_points.clear()
 	vision_points.append(pos)
 	
-	var pointLeft = pos +Vector2(FOV_length,vision_angle)
-	var pointright = pos +Vector2(FOV_length,-vision_angle)
+	var pointLeft = pos +Vector2(FOV_length,vision_angle).rotated(direction.angle())
+	var pointright = pos +Vector2(FOV_length,-vision_angle).rotated(direction.angle())
 	
 	vision_points.append(pointLeft)
 	vision_points.append(pointright)
