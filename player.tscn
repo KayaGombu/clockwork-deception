@@ -236,6 +236,7 @@ animations = [{
 height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_imqc8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

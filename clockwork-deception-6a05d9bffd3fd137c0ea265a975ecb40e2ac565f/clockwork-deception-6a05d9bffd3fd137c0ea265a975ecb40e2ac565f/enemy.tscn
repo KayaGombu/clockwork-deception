@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvgf16mg712qb"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wofkh"]
+[ext_resource type="Texture2D" uid="uid://dlrk5ii3fix65" path="res://icon.svg" id="2_kfs2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj8j3"]
+size = Vector2(131, 132)
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(273, 224)
+scale = Vector2(0.520641, 0.552592)
+script = ExtResource("1_wofkh")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11.5, 4)
+shape = SubResource("RectangleShape2D_uj8j3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(11, 4)
+texture = ExtResource("2_kfs2v")
+
+[node name="RayCast2D" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, 20)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Icon"]
+target_position = Vector2(-200, -20)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
