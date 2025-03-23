@@ -20,7 +20,7 @@ var home_pos = Vector2.ZERO
 var direction: Vector2
 var right_bounds: Vector2
 var left_bounds: Vector2
-
+var entityDetection := {}
 
 enum States{
 	WANDER,
@@ -64,15 +64,18 @@ func look_for_player():
 
 func chase_player():
 #this function starts the chase state
-	current_state = States.CHASE
-	chasing_player = true
-	recalc_path()#finds the best path to chase the player
+	if not chasing_player:
+		current_state = States.CHASE
+		chasing_player = true
+		recalc_path()#finds the best path to chase the player
 	
 func stop_chase():
 #this function starts the timer and ends the chase state
-	current_state = States.WANDER
-	chasing_player = false
-	recalc_path()
+	if chasing_player:
+		chasing_player =false
+		current_state = States.WANDER
+		nav_agent.target_position = home_pos
+		recalc_path()
 		
 func movement(delta: float) -> void:
 #this function handles the movement of the enemy
@@ -85,7 +88,7 @@ func movement(delta: float) -> void:
 		var next_path_pos = nav_agent.get_next_path_position()
 		var newDirection = (next_path_pos - global_position).normalized()
 		velocity = velocity.move_toward(newDirection*CHASE_SPEED, ACCELERATION*delta)
-		print("🟠 Moving towards:", next_path_pos, " Current Pos:", global_position, "Direction:", direction)
+		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position, "Direction:", direction)
 		
 	
 	
@@ -146,18 +149,21 @@ func flip_cone(is_facing_right: bool):
 		#collision.polygon[i].x *= 1
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	entityDetection[body] = true
 	if body == player:
 		chase_player()
 		collision.modulate = Color(0, 1, 0)
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body == player:
-		chase_player()
-		collision.modulate = Color(1, 1, 1)
+#func _on_area_2d_body_exited(body: Node2D) -> void:
+	#if body == player:
+		#chase_player()
+		#collision.modulate = Color(1, 1, 1)
 
-func _on_deaggro_range_area_exited(area: Area2D) -> void:
+func _on_deaggro_range_area_exited(body: Node2D) -> void:
 	#once it gets out of range (Deaggro Range), it goes back to the original position
-	if area.owner ==player:
-		current_state = States.WANDER
+	if body in entityDetection:
+		entityDetection.erase(body)
+	if entityDetection.size()== 0:
 		stop_chase()
+		current_state = States.WANDER
 		recalc_path()
