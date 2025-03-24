@@ -292,9 +292,6 @@ agent_radius = 6.0
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_a42v6")]
-position = Vector2(480, 249)
-
 [node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
 tile_set = SubResource("TileSet_sujbi")
 format = 2
@@ -324,7 +321,7 @@ texture = SubResource("CanvasTexture_mf4t7")
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
 position = Vector2(794, 531)
 platform_wall_layers = 1
-player = NodePath("../Player")
+player = NodePath("")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 296)
@@ -332,3 +329,7 @@ scale = Vector2(0.4, 0.4)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2k64p")
+
+[node name="Player" parent="." instance=ExtResource("1_a42v6")]
+
+[node name="Player2" parent="." instance=ExtResource("1_a42v6")]
