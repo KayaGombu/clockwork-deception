@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://owah02hlyrk0"]
+[gd_scene load_steps=9 format=3 uid="uid://owah02hlyrk0"]
 
 [ext_resource type="Script" path="res://scripts/sabotage.gd" id="1_eybtc"]
-[ext_resource type="Texture2D" path="res://32x32_Steampunk_Lamps.png" id="2_hclg0"]
+[ext_resource type="Texture2D" uid="uid://dftla8qw1rqct" path="res://32x32_Steampunk_Lamps.png" id="2_hclg0"]
 [ext_resource type="PackedScene" uid="uid://bbpmyl4y2r3o5" path="res://sabotage_popup.tscn" id="3_v25h7"]
 [ext_resource type="PackedScene" uid="uid://dy8814m8tkxjt" path="res://bomb_object.tscn" id="4_xcmfa"]
 
@@ -20,8 +20,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ne1e"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mi6q"]
 size = Vector2(26, 32)
 
@@ -36,9 +34,6 @@ metadata/_edit_group_ = true
 [node name="sabotage_art" type="AnimatedSprite2D" parent="."]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_4yfyq")
-
-[node name="sabotage_art_highlight" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2ne1e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0mi6q")
