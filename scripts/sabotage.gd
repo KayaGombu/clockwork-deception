@@ -1,10 +1,10 @@
 extends StaticBody2D
-
+@export var player: CharacterBody2D
 func _ready():
 	$sabotage_popup.visible = false
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("player_sabotage_method"):
+	if body == player:
 		print("openSabotage")
 		$sabotage_popup.visible = true
 
