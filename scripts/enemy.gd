@@ -97,7 +97,7 @@ func recalc_path():
 #every 0.5 seconds, this determines the best possible path to get to the player
 	if current_state == States.CHASE and player:
 		nav_agent.target_position = player.global_position
-	else:
+	elif current_state == States.WANDER:
 		nav_agent.target_position = home_pos
 	
 	print("New target position:", nav_agent.target_position)
@@ -164,7 +164,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
 	if body ==player:
-		print("Player left deAggro area")
-		stop_chase()
 		current_state = States.WANDER
+		stop_chase()
 		recalc_path()
