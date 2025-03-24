@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bskefccmykjqm"]
+[gd_scene load_steps=10 format=3 uid="uid://owah02hlyrk0"]
 
-[ext_resource type="Script" path="res://sabotage.gd" id="1_eybtc"]
+[ext_resource type="Script" path="res://scripts/sabotage.gd" id="1_eybtc"]
 [ext_resource type="Texture2D" uid="uid://6gpyrxrkj3hh" path="res://32x32_Steampunk_Lamps.png" id="2_hclg0"]
-[ext_resource type="PackedScene" uid="uid://dothu5sv8odvc" path="res://sabotage_popup.tscn" id="3_v25h7"]
-[ext_resource type="PackedScene" uid="uid://c2vs143ke0fne" path="res://bomb_object.tscn" id="4_xcmfa"]
+[ext_resource type="PackedScene" uid="uid://bbpmyl4y2r3o5" path="res://sabotage_popup.tscn" id="3_v25h7"]
+[ext_resource type="PackedScene" uid="uid://dy8814m8tkxjt" path="res://bomb_object.tscn" id="4_xcmfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tf1a"]
 atlas = ExtResource("2_hclg0")
