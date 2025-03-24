@@ -38,7 +38,7 @@ func _ready():
 	recalcTimer.connect("timeout", Callable(self, "recalc_path"))
 	$"aggro/Deaggro Range".connect("body_exited", Callable(self, "_on_deaggro_body_exited"))
 	for ray in sprite.get_children():
-		if ray is RayCast2D:
+		if ray is RayCast2D and player:
 			ray.collision_mask = player.collision_layer
 func _physics_process(delta: float) -> void:
 	if current_state == States.CHASE:
