@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @export var player: CharacterBody2D
-@export var SPEED: int = 50
+@export var SPEED: int = 80
 @export var CHASE_SPEED: int = 100
 @export var ACCELERATION: int = 160
 
@@ -29,7 +29,6 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	movement(delta)
-	change_direction()
 	look_for_player()
 	
 func look_for_player():
@@ -54,11 +53,25 @@ func stop_chase():
 		timer.start()
 func movement(delta: float) -> void:
 	if current_state == States.WANDER:
-		velocity = velocity.move_toward(direction*SPEED, ACCELERATION*delta)
+		#velocity = velocity.move_toward(direction*SPEED, ACCELERATION*delta)
+		get_parent().progress += SPEED/100.0
 	else:
 		velocity = velocity.move_toward(direction*CHASE_SPEED, ACCELERATION*delta)
 	move_and_slide()
-	
+
+#func change_direction(dir) -> void:
+		#if dir == "up":
+			#for ray in sprite.get_children():
+				#ray.target_position = Vector2.UP.rotated(ray.target_position.angle())				
+		#elif dir == "down":
+			#for ray in sprite.get_children():
+				#ray.target_position = Vector2.DOWN.rotated(ray.target_position.angle())
+		#elif dir == "left":
+			#for ray in sprite.get_children():
+				#ray.target_position = Vector2.LEFT.rotated(ray.target_position.angle())			
+		#elif dir == "right":
+			#for ray in sprite.get_children():
+				#ray.target_position = Vector2.RIGHT.rotated(ray.target_position.angle())			
 func change_direction() -> void:
 	#when it's in a wander state
 	if current_state == States.WANDER:
@@ -95,33 +108,16 @@ func change_direction() -> void:
 			ray_cast2.target_position = Vector2(-200,20)
 			ray_cast3.target_position = Vector2(-200,-20)
 			
-#const SPEED = 300.0
 
-#var vision_cone_angle = deg_to_rad(100.0)
-#var angle_between_rays = deg_to_rad(5.0)
-#var rayList = []
 #
-#signal player_spotted
-#func _ready() -> void:
-#
-	#gen_raycasts()
-#
-#func _physics_process(delta: float) -> void:
-	#$"Icon".set_modulate(Color(1,1,1,1))
-	#for ray in rayList:
-		#if ray.is_colliding() and ray.get_collider() is Player:
-			#$"Icon".set_modulate(Color(100,1,1,1))
-			#player_spotted.emit()
-		#
-#
-func gen_raycasts() -> void:
-	var raycount = 4
-	for i in raycount:
-		var ray = RayCast2D.new()
-		var angle = deg_to_rad(5.0)*(i-raycount/2.0)
-		ray.target_position = Vector2.RIGHT.rotated(angle)*360
-		add_child(ray)
-		ray.enabled = true
+#func gen_raycasts() -> void:
+	#var raycount = 4
+	#for i in raycount:
+		#var ray = RayCast2D.new()
+		#var angle = deg_to_rad(5.0)*(i-raycount/2.0)
+		#ray.target_position = Vector2.RIGHT.rotated(angle)*360
+		#add_child(ray)
+		#ray.enabled = true
 		
 	
 

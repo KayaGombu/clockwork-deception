@@ -40,6 +40,6 @@ position = Vector2(139, 305)
 rotation = 1.62629
 
 [node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-position = Vector2(-57.6888, 7.21112)
-rotation = -1.62629
+position = Vector2(2.2188, 3.8829)
+rotation = -3.19498
 player = NodePath("../../../Player")
