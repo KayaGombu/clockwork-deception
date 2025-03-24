@@ -38,7 +38,7 @@ func _ready():
 	recalcTimer.connect("timeout", Callable(self, "recalc_path"))
 	$"aggro/Deaggro Range".connect("body_exited", Callable(self, "_on_deaggro_body_exited"))
 	for ray in sprite.get_children():
-		if ray is RayCast2D and player:
+		if ray is RayCast2D:
 			ray.collision_mask = player.collision_layer
 func _physics_process(delta: float) -> void:
 	if current_state == States.CHASE:
@@ -97,7 +97,7 @@ func recalc_path():
 #every 0.5 seconds, this determines the best possible path to get to the player
 	if current_state == States.CHASE and player:
 		nav_agent.target_position = player.global_position
-	elif current_state == States.WANDER:
+	else:
 		nav_agent.target_position = home_pos
 	
 	print("New target position:", nav_agent.target_position)
@@ -164,6 +164,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
 	if body ==player:
-		current_state = States.WANDER
+		print("Player left deAggro area")
 		stop_chase()
+		current_state = States.WANDER
 		recalc_path()
