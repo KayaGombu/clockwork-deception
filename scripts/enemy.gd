@@ -80,7 +80,7 @@ func stop_chase():
 		
 func movement(delta: float) -> void:
 #this function handles the movement of the enemy
-	#print("Current Direction: ", direction)
+	print("Current Direction: ", direction)
 	if current_state == States.WANDER:
 		velocity = velocity.move_toward(direction*SPEED, ACCELERATION*delta)
 	elif current_state == States.CHASE:
@@ -89,7 +89,7 @@ func movement(delta: float) -> void:
 		var next_path_pos = nav_agent.get_next_path_position()
 		var newDirection = (next_path_pos - global_position).normalized()
 		velocity = velocity.move_toward(newDirection*CHASE_SPEED, ACCELERATION*delta)
-		#print("*** Moving towards:", next_path_pos, " Current Pos:", global_position, "Direction:", direction)
+		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position, "Direction:", direction)
 		
 	
 	
@@ -141,7 +141,7 @@ func change_direction() -> void:
 			ray_cast2.target_position = Vector2(-200,20)
 			ray_cast3.target_position = Vector2(-200,-20)
 			flip_cone(true)
-	#print("New Direction: ", direction)
+	print("New Direction: ", direction)
 func flip_cone(is_facing_right: bool):
 #this function flips the vision cone
 	var scale =1 if is_facing_right else -1
