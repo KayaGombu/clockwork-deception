@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=25 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
@@ -290,6 +290,12 @@ source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 6.0
 
+[sub_resource type="Curve2D" id="Curve2D_tnltt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 600, 527, 0, 0, 0, 0, 591, 386, 0, 0, 0, 0, 760, 379, 0, 0, 0, 0, 1006, 380, 0, 0, 0, 0, 1049, 473, 0, 0, 0, 0, 998, 535, 0, 0, 0, 0, 620.232, 530.015, 0, 0, 0, 0, 600, 527)
+}
+point_count = 8
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
@@ -318,18 +324,27 @@ position = Vector2(18.5, 16)
 scale = Vector2(57, 52)
 texture = SubResource("CanvasTexture_mf4t7")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-position = Vector2(794, 531)
-platform_wall_layers = 1
-player = NodePath("")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 296)
 scale = Vector2(0.4, 0.4)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-3, 0)
 navigation_polygon = SubResource("NavigationPolygon_2k64p")
 
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
+position = Vector2(159, 120)
 
-[node name="Player2" parent="." instance=ExtResource("1_a42v6")]
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-13, -10)
+curve = SubResource("Curve2D_tnltt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(670, 531)
+rotation = -1.57079
+
+[node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
+position = Vector2(3, 2)
+rotation = 1.57079
+platform_wall_layers = 1
+player = NodePath("../../../Player")

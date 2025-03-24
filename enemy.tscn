@@ -51,17 +51,6 @@ collision_mask = 3
 
 [node name="aggro" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="aggro"]
-collision_layer = 3
-collision_mask = 2
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="aggro/Area2D"]
-polygon = PackedVector2Array(-13, -11, -191, -29, -192, 39, -14, 12)
-
-[node name="Polygon2D" type="Polygon2D" parent="aggro/Area2D"]
-visible = false
-color = Color(0.188235, 1, 1, 0.678431)
-
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
@@ -70,7 +59,5 @@ shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
-[connection signal="body_entered" from="aggro/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="aggro/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
 [connection signal="body_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_body_exited"]
