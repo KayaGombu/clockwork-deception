@@ -36,6 +36,7 @@ func _ready():
 	area.connect("body_entered",Callable(self, "_on_area_2d_body_entered"))
 	area.connect("body_exited",Callable(self, "_on_area_2d_body_exited"))
 	recalcTimer.connect("timeout", Callable(self, "recalc_path"))
+	$"aggro/Deaggro Range".connect("body_exited", Callable(self, "_on_deaggro_body_exited"))
 	for ray in sprite.get_children():
 		if ray is RayCast2D:
 			ray.collision_mask = player.collision_layer
@@ -159,11 +160,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		#chase_player()
 		#collision.modulate = Color(1, 1, 1)
 
-func _on_deaggro_range_area_exited(body: Node2D) -> void:
-	#once it gets out of range (Deaggro Range), it goes back to the original position
-	if body in entityDetection:
-		entityDetection.erase(body)
-	if entityDetection.size()== 0:
+
+func _on_deaggro_range_body_exited(body: Node2D) -> void:
+	print("Exited:", body.name)
+	if body ==player:
+		print("Player left deAggro area")
 		stop_chase()
 		current_state = States.WANDER
 		recalc_path()

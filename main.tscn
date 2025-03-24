@@ -288,7 +288,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 8, 0, 640, 1144, 632, 1136, 8)])
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
-agent_radius = 7.0
+agent_radius = 6.0
 
 [node name="Main" type="Node2D"]
 
