@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbpmyl4y2r3o5"]
 
 [ext_resource type="Script" path="res://scripts/sabotage_popup.gd" id="1_xceyp"]
-[ext_resource type="Texture2D" uid="uid://b5nr0o54aiplg" path="res://BOM.BUM.png" id="2_de2d5"]
+[ext_resource type="Texture2D" uid="uid://b5nr0o54aiplg" path="res://BOM.BUM.png" id="2_b7hpv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rrrq7"]
-atlas = ExtResource("2_de2d5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruh3v"]
+atlas = ExtResource("2_b7hpv")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ym3l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rrrq7")
+"texture": SubResource("AtlasTexture_ruh3v")
 }],
-"loop": true,
+"loop": false,
 "name": &"bomb",
 "speed": 5.0
 }]
@@ -39,8 +39,8 @@ offset_bottom = 80.0
 metadata/_edit_use_anchors_ = true
 
 [node name="bomb_icon" type="AnimatedSprite2D" parent="."]
-position = Vector2(152, 74)
-scale = Vector2(0.390625, 0.365234)
+position = Vector2(136, 74)
+scale = Vector2(0.257813, 0.365234)
 sprite_frames = SubResource("SpriteFrames_3ym3l")
 animation = &"bomb"
 
