@@ -187,21 +187,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqdb7"]
-radius = 20.0
+radius = 14.0357
 
 [node name="bomb_object" type="StaticBody2D"]
+visible = false
 script = ExtResource("1_iw6pd")
 
 [node name="bomb_exploding" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 101.588)
-scale = Vector2(0.378906, 0.400736)
+position = Vector2(126.3, 104.148)
+scale = Vector2(0.205859, 0.210359)
 sprite_frames = SubResource("SpriteFrames_fyhtn")
 animation = &"explode"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(101, 82)
+position = Vector2(112, 94)
 shape = SubResource("CircleShape2D_lqdb7")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
