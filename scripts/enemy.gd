@@ -22,7 +22,8 @@ var entityDetection := {}
 
 enum States{
 	WANDER,
-	CHASE
+	CHASE,
+	RETURN
 }
 var chasing_player = false
 var current_state = States.WANDER
@@ -73,16 +74,25 @@ func chase_player(delta: float) -> void:
 	
 func stop_chase():
 #this function starts the timer and ends the chase state
-	if chasing_player:
-		current_state = States.WANDER
-		nav_agent.target_position = home_pos
+	current_state = States.RETURN
+	nav_agent.target_position = get_parent().global_position
 		
 func movement(delta: float) -> void:
 #this function handles the movement of the enemy
-	#print("Current Direction: ", direction)
 	if current_state == States.WANDER:
+		position = Vector2(0,0)
 		#print("moving")
 		get_parent().progress += SPEED/100.0
+	if current_state == States.RETURN:
+		if nav_agent.is_navigation_finished():
+			rotation = deg_to_rad(90)
+			current_state = States.WANDER
+			return
+		var next_path_pos = nav_agent.get_next_path_position()
+		velocity = global_position.direction_to(next_path_pos) *SPEED 
+		move_and_slide()
+		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position)
+	print(get_parent().position,"  ",position)
 		
 
 	
@@ -111,5 +121,4 @@ func move_ray(dir) -> void:
 func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
 	if body ==player:
-		current_state = States.WANDER
 		stop_chase()

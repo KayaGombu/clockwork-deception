@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbpmyl4y2r3o5"]
+[gd_scene load_steps=5 format=3 uid="uid://bso038wqmv1dd"]
 
 [ext_resource type="Script" path="res://scripts/sabotage_popup.gd" id="1_xceyp"]
 [ext_resource type="Texture2D" uid="uid://7nlmtm2d4me4" path="res://BOM.BUM.png" id="2_b7hpv"]
