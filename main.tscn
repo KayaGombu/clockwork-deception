@@ -1,9 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=26 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
-[ext_resource type="PackedScene" uid="uid://dy8814m8tkxjt" path="res://bomb_object.tscn" id="4_27bdj"]
 [ext_resource type="PackedScene" uid="uid://owah02hlyrk0" path="res://sabotage.tscn" id="4_081qo"]
 [ext_resource type="PackedScene" uid="uid://bbpmyl4y2r3o5" path="res://sabotage_popup.tscn" id="5_ah1bt"]
 
@@ -337,14 +336,10 @@ scale = Vector2(0.4, 0.4)
 navigation_polygon = SubResource("NavigationPolygon_2k64p")
 
 [node name="sabotage" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_081qo")]
-position = Vector2(592, 184)
+position = Vector2(600, 191)
 collision_mask = 5
 player = NodePath("../Player")
 
 [node name="sabotage_popup" parent="." instance=ExtResource("5_ah1bt")]
 position = Vector2(448, 128)
-collision_mask = 4
-
-[node name="bomb_object2" parent="." instance=ExtResource("4_27bdj")]
-position = Vector2(472, 64)
 collision_mask = 4

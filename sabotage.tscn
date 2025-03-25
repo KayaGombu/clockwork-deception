@@ -29,7 +29,7 @@ size = Vector2(26, 32)
 radius = 24.0208
 
 [node name="sabotage" type="StaticBody2D"]
-position = Vector2(151, 54)
+position = Vector2(141, 50)
 script = ExtResource("1_eybtc")
 metadata/_edit_group_ = true
 
