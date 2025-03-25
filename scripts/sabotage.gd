@@ -10,9 +10,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	$sabotage_popup.visible = false
-	$bomb_object.visible = false
 	
-func _process(float):
+func _process(Delta):
 	if Global.button_pressed == true:
 		Global.bomb_visible = true
-		$bomb_object.visible = true
