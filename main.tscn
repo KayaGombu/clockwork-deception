@@ -332,10 +332,8 @@ scale = Vector2(0.4, 0.4)
 position = Vector2(-3, 0)
 navigation_polygon = SubResource("NavigationPolygon_2k64p")
 
-[node name="sabotage" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_081qo")]
-position = Vector2(586, 187)
-collision_mask = 5
-player = NodePath("../Player")
+[node name="Player" parent="." instance=ExtResource("1_a42v6")]
+position = Vector2(652, 279)
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(-13, -10)
