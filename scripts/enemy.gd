@@ -1,9 +1,9 @@
 extends CharacterBody2D
 @export var player: CharacterBody2D
 @export var walls: StaticBody2D
-@export var SPEED: int = 100
-@export var CHASE_SPEED: int = 60
-@export var ACCELERATION: int = 65
+@export var SPEED: int = 80
+@export var CHASE_SPEED: int = 85
+@export var ACCELERATION: int = 92
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
 

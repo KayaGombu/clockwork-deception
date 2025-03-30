@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dlrk5ii3fix65" path="res://icon.svg" id="2_kfs2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj8j3"]
-size = Vector2(122, 118)
+size = Vector2(108, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hetd4"]
-size = Vector2(616, 495)
+size = Vector2(714, 628)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(200, 112)
+position = Vector2(2, 0)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
@@ -20,7 +20,7 @@ script = ExtResource("1_wofkh")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11, 3)
+position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_uj8j3")
 
 [node name="Navigation" type="Node2D" parent="."]
@@ -39,17 +39,17 @@ texture = ExtResource("2_kfs2v")
 
 [node name="RayCast2D" type="RayCast2D" parent="Icon"]
 rotation = 1.5708
-target_position = Vector2(-200, 0)
+target_position = Vector2(-400, 0)
 collision_mask = 3
 
 [node name="RayCast2D2" type="RayCast2D" parent="Icon"]
 rotation = 1.5708
-target_position = Vector2(-200, 20)
+target_position = Vector2(-400, 30)
 collision_mask = 3
 
 [node name="RayCast2D3" type="RayCast2D" parent="Icon"]
 rotation = 1.5708
-target_position = Vector2(-200, -20)
+target_position = Vector2(-400, -30)
 collision_mask = 3
 
 [node name="aggro" type="Node2D" parent="."]
@@ -57,9 +57,12 @@ collision_mask = 3
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
-position = Vector2(4, -21.5)
+position = Vector2(9, -18)
+scale = Vector2(1.75, 2)
 shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]

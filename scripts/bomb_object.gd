@@ -14,12 +14,11 @@ func _ready():
 		bomb_exploding.connect("animation_finished", Callable(self, "_on_bomb_exploding_animation_finished"))
 
 	
-<<<<<<< Updated upstream
+
 func ready():
 	$bomb_object.visible = true
 	$bomb_object.play("default")
-=======
->>>>>>> Stashed changes
+
 
 func _physics_process(delta):
 	if Global.bomb_visible == true and !bomb_exploding.is_playing():
