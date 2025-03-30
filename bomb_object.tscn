@@ -1,11 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://dy8814m8tkxjt"]
+[gd_scene load_steps=30 format=3 uid="uid://dy8814m8tkxjt"]
 
 [ext_resource type="Script" path="res://scripts/bomb_object.gd" id="1_iw6pd"]
-[ext_resource type="Texture2D" uid="uid://7nlmtm2d4me4" path="res://BOM.BUM.png" id="2_lyesc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qm8pi"]
-atlas = ExtResource("2_lyesc")
-region = Rect2(0, 0, 512, 512)
+[ext_resource type="Texture2D" uid="uid://b5nr0o54aiplg" path="res://BOM.BUM.png" id="2_lyesc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ottid"]
 atlas = ExtResource("2_lyesc")
@@ -111,14 +107,6 @@ region = Rect2(2048, 2048, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qm8pi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ottid")
 }, {
 "duration": 1.0,
@@ -199,22 +187,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqdb7"]
-radius = 20.0
+radius = 14.0357
 
 [node name="bomb_object" type="StaticBody2D"]
 visible = false
 script = ExtResource("1_iw6pd")
 
 [node name="bomb_exploding" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 101.588)
-scale = Vector2(0.378906, 0.400736)
+position = Vector2(126.3, 104.148)
+scale = Vector2(0.205859, 0.210359)
 sprite_frames = SubResource("SpriteFrames_fyhtn")
 animation = &"explode"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(101, 82)
+position = Vector2(112, 94)
 shape = SubResource("CircleShape2D_lqdb7")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
