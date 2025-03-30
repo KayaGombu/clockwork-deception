@@ -89,7 +89,7 @@ func movement(delta: float) -> void:
 			current_state = States.WANDER
 			return
 		var next_path_pos = nav_agent.get_next_path_position()
-		velocity = global_position.direction_to(next_path_pos) *SPEED 
+		velocity = global_position.direction_to(next_path_pos) * SPEED/5
 		move_and_slide()
 		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position)
 	print(get_parent().position,"  ",position)

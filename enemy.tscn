@@ -7,17 +7,16 @@
 size = Vector2(122, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hetd4"]
-size = Vector2(616, 495)
+size = Vector2(826, 681.75)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(200, 112)
+position = Vector2(206, 115)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wofkh")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(11, 3)
@@ -38,15 +37,15 @@ position = Vector2(11, 4)
 texture = ExtResource("2_kfs2v")
 
 [node name="RayCast2D" type="RayCast2D" parent="Icon"]
-target_position = Vector2(-200, 0)
+target_position = Vector2(-400, 0)
 collision_mask = 3
 
 [node name="RayCast2D2" type="RayCast2D" parent="Icon"]
-target_position = Vector2(-200, 20)
+target_position = Vector2(-400, 40)
 collision_mask = 3
 
 [node name="RayCast2D3" type="RayCast2D" parent="Icon"]
-target_position = Vector2(-200, -20)
+target_position = Vector2(-400, -40)
 collision_mask = 3
 
 [node name="aggro" type="Node2D" parent="."]
@@ -54,7 +53,7 @@ collision_mask = 3
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
-position = Vector2(4, -21.5)
+position = Vector2(12, 10)
 shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 

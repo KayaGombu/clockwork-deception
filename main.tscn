@@ -1,11 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=28 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
-[ext_resource type="PackedScene" uid="uid://dy8814m8tkxjt" path="res://bomb_object.tscn" id="4_27bdj"]
-[ext_resource type="PackedScene" uid="uid://owah02hlyrk0" path="res://sabotage.tscn" id="4_081qo"]
-[ext_resource type="PackedScene" uid="uid://bbpmyl4y2r3o5" path="res://sabotage_popup.tscn" id="5_ah1bt"]
+[ext_resource type="PackedScene" uid="uid://bditjkhd7ehyc" path="res://bomb_object.tscn" id="4_27bdj"]
+[ext_resource type="PackedScene" uid="uid://dp4m2oygvb11" path="res://sabotage.tscn" id="4_081qo"]
+[ext_resource type="PackedScene" uid="uid://bso038wqmv1dd" path="res://sabotage_popup.tscn" id="5_ah1bt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -338,9 +338,6 @@ scale = Vector2(0.4, 0.4)
 position = Vector2(-3, 0)
 navigation_polygon = SubResource("NavigationPolygon_2k64p")
 
-[node name="Player" parent="." instance=ExtResource("1_a42v6")]
-position = Vector2(652, 279)
-
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(-13, -10)
 curve = SubResource("Curve2D_tnltt")
@@ -350,10 +347,11 @@ position = Vector2(600, 527)
 rotation = -1.63454
 
 [node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-position = Vector2(2.83718e-05, -2.74181e-05)
-rotation = 1.57079
+position = Vector2(-0.127372, 1.99591)
+rotation = 3.17264
 platform_wall_layers = 1
 player = NodePath("../../../Player")
+
 [node name="sabotage" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_081qo")]
 position = Vector2(586, 187)
 collision_mask = 5
