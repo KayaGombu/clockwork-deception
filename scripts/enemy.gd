@@ -48,7 +48,6 @@ func look_for_player():
 	var player_spotted = false
 	for ray in ray_list:
 		if ray.is_colliding():
-			print("collide")
 			if ray.get_collider() == player:
 				player_spotted = true
 				print("player spotted")
@@ -66,8 +65,9 @@ func chase_player(delta: float) -> void:
 	if nav_agent.is_navigation_finished():
 		return
 	var next_path_pos = nav_agent.get_next_path_position()
-	var newDirection = (next_path_pos - global_position).normalized()
-	velocity = velocity.move_toward(newDirection*CHASE_SPEED, ACCELERATION*delta)
+	var new_direction = (next_path_pos - global_position).normalized()
+	rotate(get_angle_to(next_path_pos)+deg_to_rad(90))
+	velocity = velocity.move_toward(new_direction*CHASE_SPEED, ACCELERATION*delta)
 	
 func stop_chase():
 #this function starts the timer and ends the chase state
@@ -86,12 +86,13 @@ func movement(sdelta: float) -> void:
 			current_state = States.WANDER
 			return
 		var next_path_pos = nav_agent.get_next_path_position()
+		rotate(get_angle_to(next_path_pos)+deg_to_rad(90))
 		velocity = global_position.direction_to(next_path_pos) * SPEED/5
 		move_and_slide()
 
 func gen_raycasts():
-	var cone_angle = deg_to_rad(54.0)
-	var view_range = 400.0
+	var cone_angle = deg_to_rad(57.5)
+	var view_range = 470.0
 	var angle_between = deg_to_rad(5.0)
 	var num_rays = cone_angle/angle_between
 	for i in num_rays:

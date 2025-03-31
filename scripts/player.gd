@@ -2,6 +2,7 @@ extends CharacterBody2D
 const speed = 100;
 var current_dir = "none"
 func _physics_process(delta: float) -> void:
+	
 	player_movement(delta)
 func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):
