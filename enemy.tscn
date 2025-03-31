@@ -11,17 +11,14 @@ size = Vector2(108, 116)
 size = Vector2(714, 628)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(-3, 0)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wofkh")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_uj8j3")
 
 [node name="Navigation" type="Node2D" parent="."]
@@ -34,8 +31,7 @@ debug_path_custom_color = Color(1, 0.0705882, 1, 1)
 wait_time = 0.5
 autostart = true
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(11, 4)
+[node name="Icon" type="Sprite2D" parent="Navigation"]
 texture = ExtResource("2_kfs2v")
 
 [node name="aggro" type="Node2D" parent="."]
@@ -43,7 +39,6 @@ texture = ExtResource("2_kfs2v")
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
-position = Vector2(9, -18)
 scale = Vector2(1.75, 2)
 shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
@@ -51,9 +46,9 @@ debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(10, -50)
+position = Vector2(9.53674e-07, -60)
 rotation = -3.14159
-scale = Vector2(0.150302, 0.156948)
+scale = Vector2(0.183794, 0.177871)
 shadow_enabled = true
 texture = ExtResource("3_57ff0")
 offset = Vector2(72.9275, 1224.86)
