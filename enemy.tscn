@@ -37,20 +37,39 @@ autostart = true
 position = Vector2(11, 4)
 texture = ExtResource("2_kfs2v")
 
-[node name="RayCast2D" type="RayCast2D" parent="Icon"]
+[node name="Vision" type="Node" parent="Icon"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Icon/Vision"]
+position = Vector2(7.5, 2)
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 target_position = Vector2(-400, 0)
 collision_mask = 3
 
-[node name="RayCast2D2" type="RayCast2D" parent="Icon"]
+[node name="RayCast2D2" type="RayCast2D" parent="Icon/Vision"]
+position = Vector2(7.5, 2)
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 target_position = Vector2(-400, 30)
 collision_mask = 3
 
-[node name="RayCast2D3" type="RayCast2D" parent="Icon"]
+[node name="RayCast2D3" type="RayCast2D" parent="Icon/Vision"]
+position = Vector2(7.5, 2)
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 target_position = Vector2(-400, -30)
 collision_mask = 3
+
+[node name="RayCast2D4" type="RayCast2D" parent="Icon/Vision"]
+position = Vector2(7.5, 2)
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(-55, -392)
+collision_mask = 3
+
+[node name="RayCast2D5" type="RayCast2D" parent="Icon/Vision"]
+position = Vector2(7.5, 2)
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(63, -390)
 
 [node name="aggro" type="Node2D" parent="."]
 

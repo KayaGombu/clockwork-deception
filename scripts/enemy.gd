@@ -8,9 +8,9 @@ extends CharacterBody2D
 
 
 @onready var sprite: Sprite2D = $Icon
-@onready var ray_cast: RayCast2D = $Icon/RayCast2D
-@onready var ray_cast2: RayCast2D = $Icon/RayCast2D2
-@onready var ray_cast3: RayCast2D = $Icon/RayCast2D3
+@onready var ray_cast: RayCast2D = $Icon/Node/RayCast2D
+@onready var ray_cast2: RayCast2D = $Icon/Node/RayCast2D2
+@onready var ray_cast3: RayCast2D = $Icon/Node/RayCast2D3
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
 
@@ -90,7 +90,7 @@ func movement(delta: float) -> void:
 			return
 		var next_path_pos = nav_agent.get_next_path_position()
 		velocity = global_position.direction_to(next_path_pos) *SPEED 
-		move_and_slide()
+		look_at(next_path_pos)
 		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position)
 	print(get_parent().position,"  ",position)
 		
