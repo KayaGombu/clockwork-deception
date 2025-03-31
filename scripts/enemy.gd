@@ -1,9 +1,9 @@
 extends CharacterBody2D
 @export var player: CharacterBody2D
 @export var walls: StaticBody2D
-@export var SPEED: int = 80
-@export var CHASE_SPEED: int = 85
-@export var ACCELERATION: int = 92
+@export var SPEED: int = 100
+@export var CHASE_SPEED: int = 60
+@export var ACCELERATION: int = 65
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
 
@@ -89,7 +89,7 @@ func movement(delta: float) -> void:
 			current_state = States.WANDER
 			return
 		var next_path_pos = nav_agent.get_next_path_position()
-		velocity = global_position.direction_to(next_path_pos) *SPEED 
+		velocity = global_position.direction_to(next_path_pos) * SPEED/5
 		move_and_slide()
 		print("*** Moving towards:", next_path_pos, " Current Pos:", global_position)
 	print(get_parent().position,"  ",position)
