@@ -41,7 +41,6 @@ texture = ExtResource("2_kfs2v")
 [node name="aggro" type="Node2D" parent="."]
 
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
 position = Vector2(9, -18)
@@ -58,8 +57,6 @@ scale = Vector2(0.150302, 0.156948)
 shadow_enabled = true
 texture = ExtResource("3_57ff0")
 offset = Vector2(72.9275, 1224.86)
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
