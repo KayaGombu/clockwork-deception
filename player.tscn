@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtrphj8cdvme6"]
+[gd_scene load_steps=39 format=3 uid="uid://dtrphj8cdvme6"]
 
 [ext_resource type="Texture2D" uid="uid://c1cnhfod0juks" path="res://characterSpriteSheet.png" id="1_61eqw"]
 [ext_resource type="Script" path="res://player.gd" id="1_imqc8"]
@@ -38,6 +38,30 @@ region = Rect2(448, 512, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcooy"]
 atlas = ExtResource("1_61eqw")
 region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rpj1"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(0, 1288, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoykc"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(64, 1288, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpgit"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(128, 1288, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btmos"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(192, 1288, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8iyw"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(256, 1288, 64, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyorg"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(320, 1288, 64, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhak7"]
 atlas = ExtResource("1_61eqw")
@@ -156,11 +180,63 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7rpj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoykc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpgit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btmos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8iyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyorg")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yhak7")
 }],
 "loop": true,
 "name": &"front_idle",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hjob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbcwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubfg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urcfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eirjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meodf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek1w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmt4t")
+}],
+"loop": true,
+"name": &"front_sprint",
+"speed": 23.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -228,12 +304,45 @@ animations = [{
 "texture": SubResource("AtlasTexture_k65n8")
 }],
 "loop": true,
+"name": &"side_sprint",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny3p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m01c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ro6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcgjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cctpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2vir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p24iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k65n8")
+}],
+"loop": true,
 "name": &"side_walk",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qwfe"]
-height = 28.0
+radius = 11.0
+height = 36.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 5
@@ -242,9 +351,9 @@ script = ExtResource("1_imqc8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_3gsrb")
-animation = &"back_walk"
-frame_progress = 0.472966
+animation = &"side_sprint"
+frame_progress = 0.315797
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 22)
+position = Vector2(3, 16)
 shape = SubResource("CapsuleShape2D_3qwfe")
