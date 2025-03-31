@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/sabotage.gd" id="1_eybtc"]
 [ext_resource type="Texture2D" uid="uid://dftla8qw1rqct" path="res://32x32_Steampunk_Lamps.png" id="2_hclg0"]
 [ext_resource type="PackedScene" uid="uid://bso038wqmv1dd" path="res://sabotage_popup.tscn" id="3_v25h7"]
-[ext_resource type="PackedScene" uid="uid://bditjkhd7ehyc" path="res://bomb_object.tscn" id="4_xcmfa"]
+[ext_resource type="PackedScene" path="res://bomb_object.tscn" id="4_xcmfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tf1a"]
 atlas = ExtResource("2_hclg0")
