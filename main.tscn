@@ -1,11 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=44 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
 [ext_resource type="PackedScene" uid="uid://bso038wqmv1dd" path="res://sabotage_popup.tscn" id="4_djha4"]
-[ext_resource type="PackedScene" uid="uid://bexo6x43af2rp" path="res://bomb.tscn" id="5_ivbde"]
-[ext_resource type="PackedScene" uid="uid://c8ughw6mm5hf8" path="res://interact_area.tscn" id="6_4fn2l"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -434,14 +432,6 @@ texture = SubResource("CanvasTexture_mf4t7")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_o753e")
 
-[node name="Bomb" parent="." instance=ExtResource("5_ivbde")]
-position = Vector2(832, 149)
-
-[node name="InteractArea" parent="." instance=ExtResource("6_4fn2l")]
-position = Vector2(833, 149)
-interact_type = "print_text"
-interact_value = "Sabotage complete"
-
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
 position = Vector2(736, 144)
 
@@ -526,7 +516,6 @@ rotation = 1.5708
 player = NodePath("../../../../Player")
 
 [node name="sabotage_popup" parent="." instance=ExtResource("4_djha4")]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.577008, 0.577009, 0.577008, 1)
