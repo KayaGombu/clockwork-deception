@@ -39,7 +39,7 @@ func _ready():
 		if ray is RayCast2D:
 			ray.collision_mask = player.collision_layer
 func _physics_process(delta: float) -> void:
-	if in_hearing_range and player.velocity.length() > 0 and current_state != States.CHASE:
+	if in_hearing_range and player.velocity.length() > 0 and (current_state != States.CHASE and current_state != States.ALERT):
 		old_rotation = rotation
 		#print(rotation)
 		current_state = States.ALERT
@@ -116,9 +116,7 @@ func return_to_patrol() -> void:
 func search_for_player(delta: float):
 	print(str(rad_to_deg(rotation))+", "+str(rad_to_deg(old_rotation)))
 	rotate(deg_to_rad(1.0))
-	if floor(rotation) == floor(old_rotation):
-		print("passed ")
-	if rotation == old_rotation:
+	if is_equal_approx(rotation, old_rotation):
 		current_state = States.WANDER
 func gen_raycasts():
 	var cone_angle = deg_to_rad(57.5)
