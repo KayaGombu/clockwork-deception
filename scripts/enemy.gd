@@ -20,11 +20,14 @@ var ray_list = []
 enum States{
 	WANDER,
 	CHASE,
-	RETURN
+	RETURN,
+	ALERT,
 }
 var chasing_player = false
 var current_state = States.WANDER
 var vision_points = []
+var in_hearing_range = false
+var old_rotation
 func _ready():
 	home_pos = self.global_position
 	left_bounds = self.position+Vector2(-120,0)
@@ -36,14 +39,24 @@ func _ready():
 		if ray is RayCast2D:
 			ray.collision_mask = player.collision_layer
 func _physics_process(delta: float) -> void:
+	if in_hearing_range and player.velocity.length() > 0 and current_state != States.CHASE:
+		old_rotation = rotation
+		#print(rotation)
+		current_state = States.ALERT
 	if current_state == States.CHASE:
 		print("chasing")
 		chase_player(delta)
-	movement(delta)
+	elif current_state == States.WANDER:
+		patrol()
+	elif current_state == States.RETURN:
+		return_to_patrol()
+	elif current_state == States.ALERT:
+		search_for_player(delta)
+		
 	move_and_slide()
-	look_for_player()
+	see_player()
 
-func look_for_player():
+func see_player():
 #This function uses raycasts to detect players and walls
 	var player_spotted = false
 	for ray in ray_list:
@@ -56,7 +69,6 @@ func look_for_player():
 		current_state = States.CHASE
 	else:
 		pass
-
 
 func chase_player(delta: float) -> void:
 #this function starts the chase state
@@ -74,7 +86,6 @@ func stop_chase():
 	current_state = States.RETURN
 	nav_agent.target_position = get_parent().global_position
 		
-func movement(sdelta: float) -> void:
 #this function handles the movement of the enemy
 	if current_state == States.WANDER:
 		position = Vector2(0,0)
@@ -89,7 +100,26 @@ func movement(sdelta: float) -> void:
 		rotate(get_angle_to(next_path_pos)+deg_to_rad(90))
 		velocity = global_position.direction_to(next_path_pos) * SPEED/5
 		move_and_slide()
+func patrol():
+	position = Vector2(0,0)
+	get_parent().progress += SPEED/100.0
+func return_to_patrol() -> void:
+	if nav_agent.is_navigation_finished():
+		rotation = deg_to_rad(90)
+		current_state = States.WANDER
+		return
+	var next_path_pos = nav_agent.get_next_path_position()
+	rotate(get_angle_to(next_path_pos)+deg_to_rad(90))
+	velocity = global_position.direction_to(next_path_pos) * SPEED/5
+	move_and_slide()
 
+func search_for_player(delta: float):
+	print(str(rad_to_deg(rotation))+", "+str(rad_to_deg(old_rotation)))
+	rotate(deg_to_rad(1.0))
+	if floor(rotation) == floor(old_rotation):
+		print("passed ")
+	if rotation == old_rotation:
+		current_state = States.WANDER
 func gen_raycasts():
 	var cone_angle = deg_to_rad(57.5)
 	var view_range = 470.0
@@ -104,5 +134,14 @@ func gen_raycasts():
 		ray.enabled = true
 func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
-	if body ==player:
+	if body == player:
 		stop_chase()
+
+func _on_hearing_range_body_entered(body: Node2D) -> void:
+	if body == player:
+		in_hearing_range = true
+
+
+func _on_hearing_range_body_exited(body: Node2D) -> void:
+	if body == player:
+		in_hearing_range = false

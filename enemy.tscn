@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvgf16mg712qb"]
+[gd_scene load_steps=7 format=3 uid="uid://dvgf16mg712qb"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wofkh"]
 [ext_resource type="Texture2D" uid="uid://dlrk5ii3fix65" path="res://icon.svg" id="2_kfs2v"]
@@ -9,6 +9,9 @@ size = Vector2(108, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hetd4"]
 size = Vector2(714, 628)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cxfl"]
+radius = 18.9091
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -53,6 +56,17 @@ shadow_enabled = true
 texture = ExtResource("3_57ff0")
 offset = Vector2(72.9275, 1224.86)
 
+[node name="HearingRange" type="Area2D" parent="."]
+position = Vector2(1.42109e-11, -3.8147e-06)
+rotation = -3.14159
+scale = Vector2(0.183794, 0.177871)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HearingRange"]
+scale = Vector2(80, 80)
+shape = SubResource("CircleShape2D_2cxfl")
+
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
 [connection signal="body_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_body_exited"]
+[connection signal="body_entered" from="HearingRange" to="." method="_on_hearing_range_body_entered"]
+[connection signal="body_exited" from="HearingRange" to="." method="_on_hearing_range_body_exited"]
