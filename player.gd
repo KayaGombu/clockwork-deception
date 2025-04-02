@@ -5,9 +5,9 @@ class_name Player
 @onready var interactLabel = $"Interaction Components/InteractLabel"
 @onready var interact_label: Label = $InteractionComponents/InteractLabel
 
-var sprint_speed = 110
-var walk_speed = 80
-var max_speed = 80
+var sprint_speed = 100
+var walk_speed = 70
+var max_speed = 70
 
 
 func _ready():
