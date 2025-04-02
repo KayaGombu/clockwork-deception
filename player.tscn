@@ -151,6 +151,35 @@ animations = [{
 "texture": SubResource("AtlasTexture_bcooy")
 }],
 "loop": true,
+"name": &"back_sprint",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxx46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63044")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4fai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocktn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdbin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olqij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gac8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcooy")
+}],
+"loop": true,
 "name": &"back_walk",
 "speed": 10.0
 }, {
@@ -188,8 +217,37 @@ animations = [{
 "texture": SubResource("AtlasTexture_fmt4t")
 }],
 "loop": true,
+"name": &"front_sprint",
+"speed": 17.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hjob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbcwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubfg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urcfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eirjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meodf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek1w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmt4t")
+}],
+"loop": true,
 "name": &"front_walk",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -198,6 +256,38 @@ animations = [{
 "loop": true,
 "name": &"side_idle",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny3p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m01c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ro6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcgjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cctpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2vir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p24iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k65n8")
+}],
+"loop": true,
+"name": &"side_sprint",
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -244,8 +334,8 @@ script = ExtResource("1_imqc8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_3gsrb")
-animation = &"back_walk"
-frame_progress = 0.472966
+animation = &"front_walk"
+frame_progress = 0.102759
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

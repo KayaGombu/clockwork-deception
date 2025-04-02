@@ -5,10 +5,18 @@ class_name Player
 @onready var interactLabel = $"Interaction Components/InteractLabel"
 @onready var interact_label: Label = $InteractionComponents/InteractLabel
 
+
+var sprint_speed = 110
+var walk_speed = 80
+var max_speed = 80
+
+
 func _ready():
 	update_interactions()
 
-const speed = 100;
+#const speed = 100;
+
+
 var current_dir = "none"
 
 func _physics_process(delta: float) -> void:
@@ -17,28 +25,34 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
 		print("Interact key pressed!")
 		execute_interaction()  # Calls the interaction function
+		#running
+	if Input.is_action_pressed("Sprint"):
+		print("Running")
+		max_speed = sprint_speed
+	else:
+		max_speed = walk_speed
 
 func player_movement(delta):
 	if Input.is_action_pressed("right"):
 		current_dir = "right"
 		play_anim(1)
-		velocity.x = speed
+		velocity.x = max_speed
 		velocity.y = 0
 	elif Input.is_action_pressed("left"):
 		current_dir = "left"
 		play_anim(1)
-		velocity.x = -speed
+		velocity.x = -max_speed
 		velocity.y = 0
 	elif Input.is_action_pressed("down"):
 		current_dir = "down"
 		play_anim(1)
 		velocity.x = 0
-		velocity.y = speed
+		velocity.y = max_speed
 	elif Input.is_action_pressed("up"):
 		current_dir = "up"
 		play_anim(1)
 		velocity.x = 0
-		velocity.y = -speed
+		velocity.y = -max_speed
 	else:
 		play_anim(0)
 		velocity.x = 0
@@ -49,30 +63,60 @@ func player_movement(delta):
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
-	if dir == "right":
-		anim.flip_h = false
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			anim.play("side_idle")
-	if dir == "left":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			anim.play("side_idle")
-	if dir == "down":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("front_walk")
-		elif movement == 0:
-			anim.play("front_idle")
-	if dir == "up":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("back_walk")
-		elif movement == 0:
-			anim.play("back_idle")
+	
+	# Check if the player is sprinting
+	if max_speed == sprint_speed:
+		# Sprinting animations
+		if dir == "right":
+			anim.flip_h = false
+			if movement == 1:
+				anim.play("side_sprint")
+			elif movement == 0:
+				anim.play("side_idle")
+		if dir == "left":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("side_sprint")
+			elif movement == 0:
+				anim.play("side_idle")
+		if dir == "down":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("front_sprint")
+			elif movement == 0:
+				anim.play("front_idle")
+		if dir == "up":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("back_sprint")
+			elif movement == 0:
+				anim.play("back_idle")
+	else:
+		# Regular walking animations
+		if dir == "right":
+			anim.flip_h = false
+			if movement == 1:
+				anim.play("side_walk")
+			elif movement == 0:
+				anim.play("side_idle")
+		if dir == "left":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("side_walk")
+			elif movement == 0:
+				anim.play("side_idle")
+		if dir == "down":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("front_walk")
+			elif movement == 0:
+				anim.play("front_idle")
+		if dir == "up":
+			anim.flip_h = true
+			if movement == 1:
+				anim.play("back_walk")
+			elif movement == 0:
+				anim.play("back_idle")
 
 func _on_enemy_player_spotted():
 	pass
