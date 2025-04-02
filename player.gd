@@ -5,7 +5,6 @@ class_name Player
 @onready var interactLabel = $"Interaction Components/InteractLabel"
 @onready var interact_label: Label = $InteractionComponents/InteractLabel
 
-
 var sprint_speed = 110
 var walk_speed = 80
 var max_speed = 80
@@ -24,7 +23,8 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Interact"):
 		print("Interact key pressed!")
-		execute_interaction()  # Calls the interaction function
+		execute_interaction()  
+		
 		#running
 	if Input.is_action_pressed("Sprint"):
 		print("Running")
@@ -161,4 +161,4 @@ func execute_interaction():
 		if interactable and interactable.has_method("interaction_interact"):
 			interactable.interaction_interact() # trigger the bomb's explosion
 		else:
-			print("❌ Error: No valid object found for interaction.")
+			print("Error: No valid object found for interaction.")

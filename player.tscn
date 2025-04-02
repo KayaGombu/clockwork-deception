@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtrphj8cdvme6"]
+[gd_scene load_steps=40 format=3 uid="uid://dtrphj8cdvme6"]
 
 [ext_resource type="Texture2D" uid="uid://c1cnhfod0juks" path="res://characterSpriteSheet.png" id="1_61eqw"]
 [ext_resource type="Script" path="res://player.gd" id="1_imqc8"]
@@ -38,6 +38,30 @@ region = Rect2(448, 512, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcooy"]
 atlas = ExtResource("1_61eqw")
 region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h2jc"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtuwg"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y76jq"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3tug"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5bpk"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(256, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41cfg"]
+atlas = ExtResource("1_61eqw")
+region = Rect2(320, 1280, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhak7"]
 atlas = ExtResource("1_61eqw")
@@ -182,6 +206,29 @@ animations = [{
 "loop": true,
 "name": &"back_walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h2jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtuwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y76jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3tug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5bpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41cfg")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -334,8 +381,8 @@ script = ExtResource("1_imqc8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_3gsrb")
-animation = &"front_walk"
-frame_progress = 0.102759
+animation = &"side_sprint"
+autoplay = "front_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
