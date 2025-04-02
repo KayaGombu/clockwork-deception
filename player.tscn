@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtrphj8cdvme6"]
+[gd_scene load_steps=34 format=3 uid="uid://dtrphj8cdvme6"]
 
 [ext_resource type="Texture2D" uid="uid://c1cnhfod0juks" path="res://characterSpriteSheet.png" id="1_61eqw"]
 [ext_resource type="Script" path="res://player.gd" id="1_imqc8"]
@@ -235,6 +235,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qwfe"]
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1b4j"]
+radius = 44.9444
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 5
 script = ExtResource("1_imqc8")
@@ -248,3 +251,14 @@ frame_progress = 0.472966
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 22)
 shape = SubResource("CapsuleShape2D_3qwfe")
+
+[node name="InteractionComponents" type="Node2D" parent="."]
+z_index = 1
+
+[node name="InteractionArea" type="Area2D" parent="InteractionComponents"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
+shape = SubResource("CircleShape2D_h1b4j")
