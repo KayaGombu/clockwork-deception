@@ -104,20 +104,17 @@ func execute_interaction():
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 
-		# Ensure we are not interacting with the player's own interaction components
 		if cur_interaction.is_in_group("player_interaction"):
 			print("Ignoring self-interaction.")
 			return
 		
 		print("Interacting with:", cur_interaction.name, "(", cur_interaction.get_class(), ")")
 
-		# Move up the node tree until we find an interactable object (like the bomb)
 		var interactable = cur_interaction
 		while interactable and not interactable.has_method("interaction_interact"):
 			interactable = interactable.get_parent()
 
-		# If a valid interactable object is found, call its interaction method
 		if interactable and interactable.has_method("interaction_interact"):
-			interactable.interaction_interact()  # This should trigger the bomb's explosion
+			interactable.interaction_interact() # trigger the bomb's explosion
 		else:
 			print("❌ Error: No valid object found for interaction.")

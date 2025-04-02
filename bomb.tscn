@@ -201,11 +201,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rr44b"]
-radius = 136.528
+radius = 14.4222
 
 [node name="Bomb" type="Area2D"]
 scale = Vector2(0.25, 0.25)
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_c3k23")
 
 [node name="TextureRect" type="TextureRect" parent="."]

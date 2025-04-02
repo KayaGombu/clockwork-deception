@@ -434,7 +434,19 @@ texture = SubResource("CanvasTexture_mf4t7")
 navigation_polygon = SubResource("NavigationPolygon_o753e")
 
 [node name="Bomb" parent="." instance=ExtResource("6_tkps6")]
-position = Vector2(966, 134)
+position = Vector2(995, 109)
+
+[node name="Bomb2" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(693, 986)
+
+[node name="Bomb3" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(1700, 366)
+
+[node name="Bomb4" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(2672, 970)
+
+[node name="Bomb5" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(3215, 90)
 
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
 position = Vector2(736, 144)
@@ -524,7 +536,16 @@ player = NodePath("../../../../Player")
 color = Color(0.577008, 0.577009, 0.577008, 1)
 
 [node name="InteractArea" parent="." instance=ExtResource("5_c11at")]
-position = Vector2(973, 134)
-interact_label = "Interaction Test"
-interact_type = "print_text"
-interact_value = "yay!"
+position = Vector2(996, 110)
+
+[node name="InteractArea2" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(693, 987)
+
+[node name="InteractArea3" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(1701, 367)
+
+[node name="InteractArea4" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(2674, 972)
+
+[node name="InteractArea5" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(3217, 88)

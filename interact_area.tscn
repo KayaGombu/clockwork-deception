@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://area_2d.gd" id="1_8ibxa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4h3k1"]
-radius = 40.025
+radius = 78.2304
 
 [node name="InteractArea" type="Area2D"]
 position = Vector2(2, 0)
