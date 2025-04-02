@@ -233,7 +233,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qwfe"]
-height = 28.0
+radius = 25.0
+height = 86.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1b4j"]
 radius = 44.9444
@@ -249,7 +250,7 @@ animation = &"back_walk"
 frame_progress = 0.472966
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 22)
+position = Vector2(1, 8)
 shape = SubResource("CapsuleShape2D_3qwfe")
 
 [node name="InteractionComponents" type="Node2D" parent="."]
@@ -261,4 +262,25 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
+position = Vector2(1, 9)
 shape = SubResource("CircleShape2D_h1b4j")
+
+[node name="InteractLabel" type="Label" parent="InteractionComponents"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -67.0
+offset_right = 31.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "test text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]

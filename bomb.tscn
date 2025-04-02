@@ -209,6 +209,7 @@ collision_mask = 2
 script = ExtResource("1_c3k23")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.681)
 offset_left = -76.0
 offset_top = -96.0
@@ -220,7 +221,7 @@ expand_mode = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(76, 52)
 sprite_frames = SubResource("SpriteFrames_b18cb")
-animation = &"idle"
+animation = &"boom"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -228,4 +229,3 @@ position = Vector2(4, -4)
 shape = SubResource("CircleShape2D_rr44b")
 
 [node name="InteractArea" parent="." instance=ExtResource("3_tbi3e")]
-script = null

@@ -48,7 +48,7 @@ func look_for_player():
 	var player_spotted = false
 	for ray in ray_list:
 		if ray.is_colliding():
-			print("collide")
+			#print("collide")
 			if ray.get_collider() == player:
 				player_spotted = true
 				print("player spotted")
