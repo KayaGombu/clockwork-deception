@@ -10,8 +10,8 @@ size = Vector2(108, 116)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hetd4"]
 size = Vector2(714, 628)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2cxfl"]
-radius = 18.9091
+[sub_resource type="CircleShape2D" id="CircleShape2D_svroc"]
+radius = 18.5
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -38,6 +38,7 @@ autostart = true
 texture = ExtResource("2_kfs2v")
 
 [node name="aggro" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
@@ -48,7 +49,7 @@ debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="VisionCone" type="PointLight2D" parent="."]
 position = Vector2(9.53674e-07, -60)
 rotation = -3.14159
 scale = Vector2(0.183794, 0.177871)
@@ -63,7 +64,7 @@ scale = Vector2(0.183794, 0.177871)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HearingRange"]
 scale = Vector2(80, 80)
-shape = SubResource("CircleShape2D_2cxfl")
+shape = SubResource("CircleShape2D_svroc")
 
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
