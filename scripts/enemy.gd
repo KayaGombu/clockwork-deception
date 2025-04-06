@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
 
-@onready var vision: PointLight2D = $PointLight2D
+@onready var vision: PointLight2D = $VisionCone
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
 
