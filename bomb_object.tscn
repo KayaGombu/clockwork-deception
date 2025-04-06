@@ -105,19 +105,13 @@ region = Rect2(2048, 2048, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fyhtn"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-<<<<<<< Updated upstream
-=======
-"texture": SubResource("AtlasTexture_qm8pi")
-}],
+"frames": [],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
->>>>>>> Stashed changes
 "texture": SubResource("AtlasTexture_ottid")
 }, {
 "duration": 1.0,
@@ -194,18 +188,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"explode",
-<<<<<<< Updated upstream
 "speed": 15.0
-=======
-"speed": 8.0
->>>>>>> Stashed changes
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqdb7"]
 radius = 14.0357
 
 [node name="bomb_object" type="StaticBody2D"]
-visible = false
 script = ExtResource("1_iw6pd")
 
 [node name="bomb_exploding" type="AnimatedSprite2D" parent="."]
