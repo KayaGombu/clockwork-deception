@@ -4,13 +4,13 @@ extends CharacterBody2D
 @export var SPEED: int = 100
 @export var CHASE_SPEED: int = 35
 @export var ACCELERATION: int = 65
+
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
-
-
+@onready var vision_pivot: Node2D = $vision_pivot
 @onready var vision: PointLight2D = $PointLight2D
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
-
+var movement_dir: Vector2 = Vector2.ZERO
 var home_pos = Vector2.ZERO
 var direction: Vector2
 var right_bounds: Vector2
@@ -46,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	movement(delta)
 	move_and_slide()
 	look_for_player()
+
 	self.rotation = 0
 	$AnimatedSprite2D.rotation = 0
 
@@ -75,6 +76,9 @@ func chase_player(delta: float) -> void:
 	var newDirection = (next_path_pos - global_position).normalized()
 	velocity = velocity.move_toward(newDirection*CHASE_SPEED, ACCELERATION*delta)
 	$AnimatedSprite2D.rotation = 0
+
+	vision_pivot.look_at(next_path_pos)
+	vision_pivot.rotation = (next_path_pos - vision_pivot.global_position).angle() + deg_to_rad(90)
 	move_and_slide()
 	
 	
@@ -97,6 +101,9 @@ func movement(delta: float) -> void:
 		var next_path_pos = nav_agent.get_next_path_position()
 		velocity = global_position.direction_to(next_path_pos) * SPEED/5
 		var newDirection = global_position.direction_to(next_path_pos)
+
+		movement_dir = newDirection
+
 		if move_and_slide():
 			velocity = velocity.slide(get_last_slide_collision().get_normal())
 func update_animation():#get rid of function if you want to remove the animatedsprite
@@ -107,6 +114,11 @@ func update_animation():#get rid of function if you want to remove the animateds
 		path_follow.progress += SPEED / 550.0
 		var new_pos = path_follow.global_position
 		NewMovement = (new_pos - prev_pos).normalized() * SPEED
+
+		if prev_pos != new_pos:
+			vision_pivot.look_at(new_pos)
+			vision_pivot.rotation = (new_pos - vision_pivot.global_position).angle() + deg_to_rad(90)
+
 		path_follow.rotation = 0 
 		self.rotation = 0
 	if abs(NewMovement.x) > abs(NewMovement.y):  # Moving more horizontally
@@ -122,6 +134,7 @@ func update_animation():#get rid of function if you want to remove the animateds
 	
 	$AnimatedSprite2D.rotation = 0
 
+
 func gen_raycasts():
 	var cone_angle = deg_to_rad(54.0)
 	var view_range = 400.0
@@ -131,7 +144,7 @@ func gen_raycasts():
 		var ray = RayCast2D.new()
 		var angle = angle_between * (i-num_rays/2.0)
 		ray.target_position = Vector2.UP.rotated(angle)*view_range
-		add_child(ray)
+		vision_pivot.add_child(ray)
 		ray_list.append(ray)
 		ray.enabled = true
 func _on_deaggro_range_body_exited(body: Node2D) -> void:

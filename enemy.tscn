@@ -252,7 +252,9 @@ scale = Vector2(1.75, 2)
 shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="vision_pivot" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="vision_pivot"]
 position = Vector2(10, -50)
 rotation = -3.14159
 scale = Vector2(0.150302, 0.156948)
