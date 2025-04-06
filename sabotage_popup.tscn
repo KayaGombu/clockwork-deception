@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bso038wqmv1dd"]
+[gd_scene load_steps=4 format=3 uid="uid://bso038wqmv1dd"]
 
-[ext_resource type="Script" path="res://scripts/sabotage_popup.gd" id="1_xceyp"]
 [ext_resource type="Texture2D" uid="uid://b5nr0o54aiplg" path="res://BOM.BUM.png" id="2_b7hpv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruh3v"]
@@ -21,7 +20,6 @@ animations = [{
 [node name="sabotage_popup" type="StaticBody2D"]
 visible = false
 position = Vector2(16, 23)
-script = ExtResource("1_xceyp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -15.0
