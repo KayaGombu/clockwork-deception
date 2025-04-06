@@ -405,7 +405,6 @@ shape = SubResource("CapsuleShape2D_v1hdq")
 [node name="InteractLabel" type="Label" parent="InteractionComponents"]
 visible = false
 top_level = true
-anchors_preset = -1
 offset_left = -91.0
 offset_top = -46.0
 offset_right = 91.0
