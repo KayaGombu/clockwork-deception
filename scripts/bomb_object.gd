@@ -6,4 +6,3 @@ func ready():
 func _process(delta):
 	$bomb_object.visible = true
 	$bomb_object.play("explode")
-	
