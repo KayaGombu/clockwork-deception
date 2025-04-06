@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var all_interactions = []
-@onready var interactLabel = $"Interaction Components/InteractLabel"
+@onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var interact_label: Label = $InteractionComponents/InteractLabel
 
 var sprint_speed = 100
@@ -137,6 +137,8 @@ func update_interactions():
 	if interactLabel == null:
 		print("Error: Interact label not found!")
 		return  # Avoid crash
+
+		
 
 	if all_interactions:
 		interactLabel.text = all_interactions[0].interact_label

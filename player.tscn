@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dtrphj8cdvme6"]
+[gd_scene load_steps=41 format=3 uid="uid://dtrphj8cdvme6"]
 
 [ext_resource type="Texture2D" uid="uid://c1cnhfod0juks" path="res://characterSpriteSheet.png" id="1_61eqw"]
 [ext_resource type="Script" path="res://player.gd" id="1_imqc8"]
@@ -375,8 +375,11 @@ height = 38.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v1hdq"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_secrv"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_imqc8")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
@@ -401,20 +404,19 @@ shape = SubResource("CapsuleShape2D_v1hdq")
 
 [node name="InteractLabel" type="Label" parent="InteractionComponents"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -67.0
-offset_right = 31.0
-offset_bottom = -44.0
+top_level = true
+offset_left = -91.0
+offset_top = -46.0
+offset_right = 91.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "test text"
+text = "Press \"E\" to sabotage!"
+label_settings = SubResource("LabelSettings_secrv")
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
