@@ -3,9 +3,9 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var has_exploded = false
 
-@onready var sabotage_label = $"../UI/Panel/SabotageLabel"  # Reference to the label in the main scene
+@onready var sabotage_label = $"../UI/Panel/SabotageLabel" # Reference to the label in the main scene
 
-var sabotage_count: int = 0  # Counter to track sabotage count
+#var sabotage_count: int = 0  # Counter to track sabotage count
 signal sabatoge
 func _ready():
 	if animated_sprite_2d:
@@ -22,8 +22,12 @@ func interaction_interact():
 	print("Bomb triggered!")  
 
 	# Increase the sabotage count
-	get_parent().sabotage_count += 1
-	print("Bomb sabotaged! Total sabotages: ", get_parent().sabotage_count)  # Debugging
+	SabotageData.sabotage_count += 1
+	print("Bomb sabotaged! Total sabotages: ", SabotageData.sabotage_count)  # Debugging
+	if sabotage_label:
+		sabotage_label.text = "Sabotages: " + str(SabotageData.sabotage_count)
+	else:
+		print("⚠️ sabotage_label is null — couldn't find the node!")
 
 	
 	if animated_sprite_2d:

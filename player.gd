@@ -1,11 +1,11 @@
 extends CharacterBody2D
-class_name Player
+#class_name Player
 
 @onready var all_interactions = []
 @onready var interactLabel = $InteractionComponents/InteractLabel
 @onready var interact_label: Label = $InteractionComponents/InteractLabel
 
-var sprint_speed = 100
+var sprint_speed = 200
 var walk_speed = 70
 var max_speed = 70
 

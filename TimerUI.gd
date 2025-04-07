@@ -7,7 +7,7 @@ var sabotage_count = 0
 func _process(delta: float) -> void:
 	time = $Timer.time_left
 	$"UI/Panel/TimerLabel".text = str(floor(time*2))
-	$UI/Panel/SabotageLabel.text = "Sabotages:" + str(sabotage_count)
+	$UI/Panel/SabotageLabel.text = "Sabotages:" + str(SabotageData.sabotage_count)
 
 
 	

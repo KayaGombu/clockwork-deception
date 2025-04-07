@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceb4kpa71feug"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_trgxm"]
+[ext_resource type="Texture2D" uid="uid://dt28uo8o7dfn7" path="res://orig2.png" id="2_2u2qp"]
+[ext_resource type="FontFile" uid="uid://s504703sgsay" path="res://Steamwreck-07pd.ttf" id="3_4jwnw"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ba23k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_trgxm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 656.0
+texture = ExtResource("2_2u2qp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.014
+anchor_bottom = 0.025
+offset_left = 432.0
+offset_top = 544.0
+offset_right = 687.872
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 70
+text = "Restart"
+icon = SubResource("ImageTexture_ba23k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 16.0
+offset_right = 816.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("3_4jwnw")
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 80
+text = "Mission Successful"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 104.0
+offset_right = 1016.0
+offset_bottom = 304.0
+theme_override_fonts/normal_font = ExtResource("3_4jwnw")
+theme_override_font_sizes/normal_font_size = 70
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 336.0
+offset_right = 856.0
+offset_bottom = 424.0
+theme_override_fonts/normal_font = ExtResource("3_4jwnw")
+theme_override_font_sizes/normal_font_size = 60
+text = "Your rank is:"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 416.0
+offset_right = 768.0
+offset_bottom = 560.0
+theme_override_fonts/normal_font = ExtResource("3_4jwnw")
+theme_override_font_sizes/normal_font_size = 80
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
