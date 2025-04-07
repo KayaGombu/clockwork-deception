@@ -3,6 +3,8 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var has_exploded = false
 
+@onready var game_manager = get_node("res://game_manager.gd")
+
 func _ready():
 	if animated_sprite_2d:
 		animated_sprite_2d.play("idle")  # Start with idle animation
@@ -17,6 +19,13 @@ func interaction_interact():
 
 	has_exploded = true
 	print("Bomb triggered!")  
+	
+	if game_manager:
+		game_manager.add_point()
+		print("Point added!")  # Debugging: Check if the point is added correctly
+	else:
+		print("Error: GameManager not found!")
+
 
 	if animated_sprite_2d:
 		animated_sprite_2d.play("boom")  # Play the explosion animation
@@ -24,8 +33,8 @@ func interaction_interact():
 
 		$CollisionShape2D.queue_free()
 
-		print("Bomb exploded!")  # Debugging: Confirm explosion is complete
-
+		print("Bomb exploded!")  
+		
 	
 	else:
 		print("Error: AnimatedSprite2D not found in Bomb")
