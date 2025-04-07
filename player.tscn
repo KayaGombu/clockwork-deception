@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://dtrphj8cdvme6"]
+[gd_scene load_steps=42 format=3 uid="uid://dtrphj8cdvme6"]
 
 [ext_resource type="Texture2D" uid="uid://c1cnhfod0juks" path="res://characterSpriteSheet.png" id="1_61eqw"]
 [ext_resource type="Script" path="res://player.gd" id="1_imqc8"]
+[ext_resource type="AudioStream" uid="uid://b521fqou04e7u" path="res://GameBackground.mp3" id="3_tbogj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwnwg"]
 atlas = ExtResource("1_61eqw")
@@ -419,6 +420,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tbogj")
 
 [connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
