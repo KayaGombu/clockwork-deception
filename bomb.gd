@@ -6,14 +6,13 @@ var has_exploded = false
 @onready var sabotage_label = $"../UI/Panel/SabotageLabel"  # Reference to the label in the main scene
 
 var sabotage_count: int = 0  # Counter to track sabotage count
-
+signal sabatoge
 func _ready():
 	if animated_sprite_2d:
 		animated_sprite_2d.play("idle")  # Start with idle animation
 	else:
 		print("Error: AnimatedSprite2D not found in Bomb")
-func _process(delta: float) -> void:
-	sabotage_label.text = "Sabotages: " + str(sabotage_count)
+
 func interaction_interact():
 	if has_exploded:
 		print("Bomb has already exploded. Ignoring the trigger.")  # Debugging
@@ -23,12 +22,10 @@ func interaction_interact():
 	print("Bomb triggered!")  
 
 	# Increase the sabotage count
-	sabotage_count += 1
-	print("Bomb sabotaged! Total sabotages: ", sabotage_count)  # Debugging
+	get_parent().sabotage_count += 1
+	print("Bomb sabotaged! Total sabotages: ", get_parent().sabotage_count)  # Debugging
 
-	sabotage_label.text = "Sabotages: " + str(sabotage_count)
 	
-
 	if animated_sprite_2d:
 		animated_sprite_2d.play("boom")  # Play the explosion animation
 		print("Explosion animation playing.")  # Debugging
