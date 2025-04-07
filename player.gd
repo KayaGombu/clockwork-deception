@@ -9,7 +9,8 @@ var sprint_speed = 100
 var walk_speed = 70
 var max_speed = 70
 
-var bombs_sabotaged: int = 0  # Counter for bombs sabotaged
+var bombs_sabotaged = 0  # Counter for bombs sabotaged
+
 
 
 func _ready():
