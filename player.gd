@@ -9,6 +9,8 @@ var sprint_speed = 100
 var walk_speed = 70
 var max_speed = 70
 
+var bombs_sabotaged: int = 0  # Counter for bombs sabotaged
+
 
 func _ready():
 	update_interactions()
@@ -161,6 +163,9 @@ func execute_interaction():
 			interactable = interactable.get_parent()
 
 		if interactable and interactable.has_method("interaction_interact"):
-			interactable.interaction_interact() # trigger the bomb's explosion
+			interactable.interaction_interact() 
+			
+			bombs_sabotaged += 1  # Increment the sabotage counter
+			print("Bomb Sabotaged! Total sabotaged: ", bombs_sabotaged)
 		else:
 			print("Error: No valid object found for interaction.")

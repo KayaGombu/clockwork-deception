@@ -22,6 +22,7 @@ enum States{
 	RETURN,
 	ALERT,
 }
+var collider = null
 var chasing_player = false
 var current_state = States.WANDER
 var vision_points = []
@@ -53,6 +54,13 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	see_player()
+	
+	if move_and_slide():
+		collider = get_last_slide_collision().get_collider()
+		
+	if collider == player:
+		get_tree().change_scene_to_file("res://gameover.tscn")
+		
 
 func see_player():
 #This function uses raycasts to detect players and walls

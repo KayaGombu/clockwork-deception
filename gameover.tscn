@@ -1,49 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbag8dc2cnwvs"]
+[gd_scene load_steps=10 format=3 uid="uid://cf3rw05ednhfq"]
 
-[ext_resource type="Script" path="res://gameover.gd" id="1_tgxsi"]
-[ext_resource type="FontFile" uid="uid://s504703sgsay" path="res://Steamwreck-07pd.ttf" id="2_vmhnq"]
-[ext_resource type="Texture2D" uid="uid://tes2mclsumyi" path="res://Untitled83_20250406232026 (1).png" id="3_83850"]
-[ext_resource type="Texture2D" uid="uid://clhbltpbhogxh" path="res://Untitled83_20250406232022.png" id="4_8kglj"]
-[ext_resource type="Texture2D" uid="uid://opjil60e4ry0" path="res://Untitled83_20250406232025.png" id="5_q0mss"]
-[ext_resource type="Texture2D" uid="uid://cfxpsd8j1qhqy" path="res://exit normal.png" id="6_8tcyw"]
-[ext_resource type="Texture2D" uid="uid://des200chv14vs" path="res://exit pressed.png" id="7_g4esx"]
-[ext_resource type="Texture2D" uid="uid://cvhyt23ssk0kf" path="res://exit hover.png" id="8_h1wr4"]
+[ext_resource type="Script" path="res://gameover.gd" id="1_pprll"]
+[ext_resource type="Texture2D" uid="uid://dv4fu5nrsx4x1" path="res://1_20250406233852.png" id="1_q5ud1"]
+[ext_resource type="Texture2D" uid="uid://tes2mclsumyi" path="res://Untitled83_20250406232026 (1).png" id="2_ux2tp"]
+[ext_resource type="Texture2D" uid="uid://clhbltpbhogxh" path="res://Untitled83_20250406232022.png" id="3_27bqr"]
+[ext_resource type="Texture2D" uid="uid://opjil60e4ry0" path="res://Untitled83_20250406232025.png" id="4_h1jqt"]
+[ext_resource type="FontFile" uid="uid://s504703sgsay" path="res://Steamwreck-07pd.ttf" id="5_pfkku"]
+[ext_resource type="Texture2D" uid="uid://cfxpsd8j1qhqy" path="res://exit normal.png" id="6_ka8rx"]
+[ext_resource type="Texture2D" uid="uid://des200chv14vs" path="res://exit pressed.png" id="7_k445f"]
+[ext_resource type="Texture2D" uid="uid://cvhyt23ssk0kf" path="res://exit hover.png" id="8_8bilr"]
 
 [node name="gameover" type="CanvasLayer"]
-script = ExtResource("1_tgxsi")
+script = ExtResource("1_pprll")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="."]
-offset_left = 199.0
-offset_top = 150.0
-offset_right = 985.0
-offset_bottom = 276.0
-theme_override_fonts/font = ExtResource("2_vmhnq")
-theme_override_font_sizes/font_size = 100
-text = "Game Over! You got caught :("
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q5ud1")
 
 [node name="back" type="TextureButton" parent="."]
-offset_left = 454.0
-offset_top = 354.0
+offset_left = 469.0
+offset_top = 423.0
 offset_right = 627.0
-offset_bottom = 394.0
-texture_normal = ExtResource("3_83850")
-texture_pressed = ExtResource("4_8kglj")
-texture_hover = ExtResource("5_q0mss")
+offset_bottom = 463.0
+texture_normal = ExtResource("2_ux2tp")
+texture_pressed = ExtResource("3_27bqr")
+texture_hover = ExtResource("4_h1jqt")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 87.0
+offset_right = 817.0
+offset_bottom = 366.0
+theme_override_fonts/font = ExtResource("5_pfkku")
+theme_override_font_sizes/font_size = 110
+text = "Game Over!
+You got caught :<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="exit" type="TextureButton" parent="."]
-offset_left = 457.0
-offset_top = 445.0
-offset_right = 628.0
-offset_bottom = 483.0
-texture_normal = ExtResource("6_8tcyw")
-texture_pressed = ExtResource("7_g4esx")
-texture_hover = ExtResource("8_h1wr4")
+offset_left = 469.0
+offset_top = 497.0
+offset_right = 627.0
+offset_bottom = 536.0
+texture_normal = ExtResource("6_ka8rx")
+texture_pressed = ExtResource("7_k445f")
+texture_hover = ExtResource("8_8bilr")
 ignore_texture_size = true
 stretch_mode = 0
 
