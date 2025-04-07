@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://6c8j75il3pkv"]
+[gd_scene load_steps=13 format=3 uid="uid://6c8j75il3pkv"]
 
 [ext_resource type="Script" path="res://game_menu.gd" id="1_ox6oi"]
 [ext_resource type="Texture2D" uid="uid://cjehpp2wu24q6" path="res://orig.png" id="2_f3ptw"]
+[ext_resource type="Texture2D" uid="uid://cfxpsd8j1qhqy" path="res://exit normal.png" id="3_7xk3i"]
 [ext_resource type="FontFile" uid="uid://s504703sgsay" path="res://Steamwreck-07pd.ttf" id="3_wn7fp"]
+[ext_resource type="Texture2D" uid="uid://3s8hsd5tr276" path="res://Untitled83_20250406225214.png" id="3_yaf4h"]
+[ext_resource type="Texture2D" uid="uid://des200chv14vs" path="res://exit pressed.png" id="4_d13g0"]
+[ext_resource type="Texture2D" uid="uid://gtoxobwisvau" path="res://Untitled83_20250406225001.png" id="4_wp3l7"]
+[ext_resource type="Texture2D" uid="uid://cvhyt23ssk0kf" path="res://exit hover.png" id="5_18avs"]
+[ext_resource type="Texture2D" uid="uid://dbkqfxg4hirrg" path="res://Untitled83_20250406224918.png" id="5_cu4qo"]
+[ext_resource type="Texture2D" uid="uid://dww7is8n26hrr" path="res://Untitled83_20250406230115.png" id="6_6wj2y"]
+[ext_resource type="Texture2D" uid="uid://dnl57pcb30koq" path="res://Untitled83_20250406230233.png" id="7_aao3o"]
+[ext_resource type="Texture2D" uid="uid://dx1miig7b4qkm" path="res://Untitled83_20250406230117.png" id="8_guuf7"]
 
 [node name="Game Menu" type="Control"]
 layout_mode = 3
@@ -19,37 +28,55 @@ offset_right = 1208.0
 offset_bottom = 696.0
 texture = ExtResource("2_f3ptw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Start" type="TextureButton" parent="."]
 layout_mode = 2
+offset_left = 497.0
+offset_top = 473.0
+offset_right = 685.0
+offset_bottom = 516.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("3_yaf4h")
+texture_pressed = ExtResource("4_wp3l7")
+texture_hover = ExtResource("5_cu4qo")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Controls" type="TextureButton" parent="."]
 layout_mode = 2
-text = "Start"
+offset_left = 497.0
+offset_top = 530.0
+offset_right = 686.0
+offset_bottom = 573.0
+texture_normal = ExtResource("6_6wj2y")
+texture_pressed = ExtResource("7_aao3o")
+texture_hover = ExtResource("8_guuf7")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="."]
 layout_mode = 2
-text = "Exit"
-
-[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Controls"
+offset_left = 497.0
+offset_top = 588.0
+offset_right = 686.0
+offset_bottom = 631.0
+texture_normal = ExtResource("3_7xk3i")
+texture_pressed = ExtResource("4_d13g0")
+texture_hover = ExtResource("5_18avs")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 312.0
 offset_top = 160.0
 offset_right = 864.0
-offset_bottom = 440.0
+offset_bottom = 269.0
 theme_override_fonts/normal_font = ExtResource("3_wn7fp")
 theme_override_font_sizes/mono_font_size = 0
 theme_override_font_sizes/normal_font_size = 100
 text = "Clockwork Deception"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
