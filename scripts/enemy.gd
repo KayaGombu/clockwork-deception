@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
 @onready var vision_pivot: Node2D = $vision_pivot
-@onready var vision: PointLight2D = $PointLight2D
+@onready var vision: PointLight2D = $vision_pivot/PointLight2D
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
 var movement_dir: Vector2 = Vector2.ZERO
