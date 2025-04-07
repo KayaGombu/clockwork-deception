@@ -20,7 +20,7 @@ var current_dir = "none"
 
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
-	
+
 	if Input.is_action_just_pressed("Interact"):
 		print("Interact key pressed!")
 		execute_interaction()  
@@ -163,8 +163,6 @@ func execute_interaction():
 			interactable.interaction_interact() # trigger the bomb's explosion
 		else:
 			print("Error: No valid object found for interaction.")
-
-
 func _process(delta):
 	if $AudioStreamPlayer.playing == false:
 		$AudioStreamPlayer.play()
