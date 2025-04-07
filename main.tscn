@@ -456,6 +456,9 @@ position = Vector2(2672, 970)
 [node name="Bomb5" parent="." instance=ExtResource("6_tkps6")]
 position = Vector2(3215, 90)
 
+[node name="Bomb6" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(170, 592)
+
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
 position = Vector2(3388, 272)
 
