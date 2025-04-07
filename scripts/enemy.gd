@@ -22,6 +22,7 @@ enum States{
 	RETURN,
 	ALERT,
 }
+var collider = null
 var chasing_player = false
 var current_state = States.WANDER
 var vision_points = []
@@ -51,11 +52,12 @@ func _physics_process(delta: float) -> void:
 	elif current_state == States.ALERT:
 		search_for_player(delta)
 		
-	
+	move_and_slide()
 	see_player()
-	var collider
+	
 	if move_and_slide():
-		collider = get_last_slide_collision().get_collider()	
+		collider = get_last_slide_collision().get_collider()
+		
 	if collider == player:
 		get_tree().change_scene_to_file("res://gameover.tscn")
 		
@@ -70,7 +72,6 @@ func see_player():
 				print("player spotted")
 				break
 	if player_spotted: #once it spots the enemy, initate chase state
-		vision.color = (Color(1,0,0,0.5))
 		current_state = States.CHASE
 	else:
 		pass
@@ -89,7 +90,6 @@ func chase_player(delta: float) -> void:
 func stop_chase():
 #this function starts the timer and ends the chase state
 	current_state = States.RETURN
-	vision.color = Color(1,1,1)
 	nav_agent.target_position = get_parent().global_position
 		
 func patrol():
