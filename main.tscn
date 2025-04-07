@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=48 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
@@ -6,6 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="4_a42v6"]
 [ext_resource type="PackedScene" uid="uid://54yicat8vwj6" path="res://interact_area.tscn" id="5_c11at"]
 [ext_resource type="PackedScene" uid="uid://b4homifi8p4fa" path="res://bomb.tscn" id="6_tkps6"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="7_qm70c"]
+
+[sub_resource type="GDScript" id="GDScript_k0qt7"]
+script/source = "extends Node2D
+# Called when the node enters the scene tree for the first time.
+var time 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _process(delta: float) -> void:
+	time = $Timer.time_left
+	$\"UI/Panel/TimerLabel\".text = str(floor(time*3))
+
+	
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_file(\"res://gameover.tscn\")
+		
+"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -423,6 +440,7 @@ _data = {
 point_count = 14
 
 [node name="Main" type="Node2D"]
+script = SubResource("GDScript_k0qt7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1280.0
@@ -474,6 +492,9 @@ position = Vector2(2672, 970)
 
 [node name="Bomb5" parent="." instance=ExtResource("6_tkps6")]
 position = Vector2(3215, 90)
+
+[node name="Bomb6" parent="." instance=ExtResource("6_tkps6")]
+position = Vector2(170, 592)
 
 [node name="Player" parent="." instance=ExtResource("4_a42v6")]
 position = Vector2(3388, 272)
@@ -587,3 +608,39 @@ position = Vector2(2674, 972)
 
 [node name="InteractArea5" parent="." instance=ExtResource("5_c11at")]
 position = Vector2(3217, 88)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 640)
+script = ExtResource("7_qm70c")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_left = 9.0
+offset_top = 13.0
+offset_right = 218.0
+offset_bottom = 185.0
+
+[node name="SabotageLabel" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 197.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 30
+text = "Sabotages:"
+
+[node name="TimerLabel" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 70.0
+offset_right = 211.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

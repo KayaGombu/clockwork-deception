@@ -51,8 +51,14 @@ func _physics_process(delta: float) -> void:
 	elif current_state == States.ALERT:
 		search_for_player(delta)
 		
-	move_and_slide()
+	
 	see_player()
+	var collider
+	if move_and_slide():
+		collider = get_last_slide_collision().get_collider()	
+	if collider == player:
+		get_tree().change_scene_to_file("res://gameover.tscn")
+		
 
 func see_player():
 #This function uses raycasts to detect players and walls
