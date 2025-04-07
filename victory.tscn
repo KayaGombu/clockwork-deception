@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjaosooru8doq"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_trgxm"]
+[ext_resource type="Texture2D" path="res://orig2.png" id="2_2u2qp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_trgxm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 672.0
+texture = ExtResource("2_2u2qp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.014
+anchor_bottom = 0.025
+offset_left = 240.0
+offset_top = 488.0
+offset_right = 839.872
+offset_bottom = 551.8
+theme_override_font_sizes/font_size = 100
+text = "Restart"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 1208.0
+offset_bottom = 312.0
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 80
+text = "Mission Successful"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 216.0
+offset_right = 896.0
+offset_bottom = 416.0
+theme_override_font_sizes/normal_font_size = 70
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
