@@ -457,7 +457,7 @@ position = Vector2(2672, 970)
 position = Vector2(3215, 90)
 
 [node name="Player" parent="." instance=ExtResource("1_a42v6")]
-position = Vector2(648, 104)
+position = Vector2(3388, 272)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 16)
@@ -541,7 +541,6 @@ rotation = -0.275576
 rotates = false
 
 [node name="Enemy" parent="EnemyMovement/Enemy5Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-visible = false
 rotation = 1.5708
 player = NodePath("../../../../Player")
 
