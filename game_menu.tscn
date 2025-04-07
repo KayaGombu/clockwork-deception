@@ -30,10 +30,10 @@ texture = ExtResource("2_f3ptw")
 
 [node name="Start" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 497.0
-offset_top = 473.0
+offset_left = 495.0
+offset_top = 424.0
 offset_right = 685.0
-offset_bottom = 516.0
+offset_bottom = 467.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture_normal = ExtResource("3_yaf4h")
@@ -44,10 +44,10 @@ stretch_mode = 0
 
 [node name="Controls" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 497.0
-offset_top = 530.0
-offset_right = 686.0
-offset_bottom = 573.0
+offset_left = 496.0
+offset_top = 484.0
+offset_right = 685.0
+offset_bottom = 527.0
 texture_normal = ExtResource("6_6wj2y")
 texture_pressed = ExtResource("7_aao3o")
 texture_hover = ExtResource("8_guuf7")
@@ -56,10 +56,10 @@ stretch_mode = 0
 
 [node name="Exit" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 497.0
-offset_top = 588.0
-offset_right = 686.0
-offset_bottom = 631.0
+offset_left = 496.0
+offset_top = 542.0
+offset_right = 685.0
+offset_bottom = 585.0
 texture_normal = ExtResource("3_7xk3i")
 texture_pressed = ExtResource("4_d13g0")
 texture_hover = ExtResource("5_18avs")
