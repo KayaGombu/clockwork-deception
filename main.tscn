@@ -1,9 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://coc26dgpj7wd0"]
+[gd_scene load_steps=47 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
+[ext_resource type="Texture2D" uid="uid://clstvwk0mt5ke" path="res://pixil-frame-0 (2).png" id="1_jlda7"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
 [ext_resource type="PackedScene" uid="uid://bso038wqmv1dd" path="res://sabotage_popup.tscn" id="4_djha4"]
+[ext_resource type="PackedScene" path="res://interact_area.tscn" id="5_c11at"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="7_qm70c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -402,6 +405,13 @@ point_count = 14
 
 [node name="Main" type="Node2D"]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1280.0
+offset_top = -784.0
+offset_right = 3640.0
+offset_bottom = 1968.0
+texture = ExtResource("1_jlda7")
+
 [node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_sujbi")
@@ -478,6 +488,7 @@ position = Vector2(1279.89, 776.001)
 [node name="Enemy" parent="EnemyMovement/Enemy3Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
 rotation = 1.5708
 player = NodePath("../../../../Player")
+SPEED = 140
 
 [node name="Enemy4Path" type="Path2D" parent="EnemyMovement"]
 curve = SubResource("Curve2D_cpcx8")
@@ -516,3 +527,22 @@ player = NodePath("../../../../Player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.577008, 0.577009, 0.577008, 1)
+
+[node name="InteractArea" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(996, 110)
+
+[node name="InteractArea2" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(693, 987)
+
+[node name="InteractArea3" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(1701, 367)
+
+[node name="InteractArea4" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(2674, 972)
+
+[node name="InteractArea5" parent="." instance=ExtResource("5_c11at")]
+position = Vector2(3217, 88)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 640)
+script = ExtResource("7_qm70c")
