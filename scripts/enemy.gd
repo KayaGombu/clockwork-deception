@@ -151,3 +151,4 @@ func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
 	if body ==player:
 		stop_chase()
+		

@@ -262,5 +262,8 @@ texture = ExtResource("3_57ff0")
 offset = Vector2(72.9275, 1224.86)
 
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
+[connection signal="area_entered" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_entered"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
+[connection signal="body_entered" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_body_entered"]
 [connection signal="body_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_body_exited"]
+[connection signal="child_entered_tree" from="aggro/Deaggro Range/CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
