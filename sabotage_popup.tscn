@@ -18,7 +18,6 @@ animations = [{
 }]
 
 [node name="sabotage_popup" type="StaticBody2D"]
-visible = false
 position = Vector2(16, 23)
 
 [node name="ColorRect" type="ColorRect" parent="."]

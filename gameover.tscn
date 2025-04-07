@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf3rw05ednhfq"]
+[gd_scene load_steps=10 format=3 uid="uid://7u6uhctjolgs"]
 
 [ext_resource type="Script" path="res://gameover.gd" id="1_pprll"]
 [ext_resource type="Texture2D" uid="uid://dv4fu5nrsx4x1" path="res://1_20250406233852.png" id="1_q5ud1"]
@@ -40,7 +40,7 @@ offset_bottom = 366.0
 theme_override_fonts/font = ExtResource("5_pfkku")
 theme_override_font_sizes/font_size = 110
 text = "Game Over!
-You got caught :<"
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
