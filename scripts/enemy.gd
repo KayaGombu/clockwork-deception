@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var nav_agent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
 @onready var vision_pivot: Node2D = $vision_pivot
-@onready var vision: PointLight2D = $PointLight2D
+@onready var vision: PointLight2D = $vision_pivot/PointLight2D
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
 var movement_dir: Vector2 = Vector2.ZERO
@@ -122,20 +122,9 @@ func update_animation():#get rid of function if you want to remove the animateds
 			vision_pivot.look_at(new_pos)
 			vision_pivot.rotation = (new_pos - vision_pivot.global_position).angle() + deg_to_rad(90)
 
-		path_follow.rotation = 0 
-		self.rotation = 0
-	if abs(NewMovement.x) > abs(NewMovement.y):  # Moving more horizontally
-		if NewMovement.x > 0:
-			$AnimatedSprite2D.play("right")
-		elif NewMovement.x<0:
-			$AnimatedSprite2D.play("left")
-	else:  # Moving more vertically
-		if NewMovement.y < 0:
-			$AnimatedSprite2D.play("walk")  # Up
-		elif NewMovement.y>0:
+	if NewMovement.x > 0 or NewMovement.y > 0:
 			$AnimatedSprite2D.play("down")  # Down
 	
-	$AnimatedSprite2D.rotation = 0
 
 func gen_raycasts():
 	var cone_angle = deg_to_rad(57.5)

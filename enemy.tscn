@@ -242,7 +242,7 @@ texture = ExtResource("2_kfs2v")
 position = Vector2(8, -36)
 scale = Vector2(6.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_abhqh")
-animation = &"walk"
+animation = &"down"
 
 [node name="aggro" type="Node2D" parent="."]
 metadata/_edit_group_ = true
