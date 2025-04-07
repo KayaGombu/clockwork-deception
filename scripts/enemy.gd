@@ -11,7 +11,6 @@ extends CharacterBody2D
 @onready var recalcTimer: Timer = $Navigation/recalcTimer
 
 var movement_dir: Vector2 = Vector2.ZERO
-var home_pos = Vector2.ZERO
 var direction: Vector2
 var right_bounds: Vector2
 var left_bounds: Vector2
@@ -29,7 +28,6 @@ var vision_points = []
 var in_hearing_range = false
 var old_rotation
 func _ready():
-	home_pos = self.global_position
 	left_bounds = self.position+Vector2(-120,0)
 	right_bounds = self.position+Vector2(120,0)
 	recalcTimer.connect("timeout", Callable(self, "recalc_path"))
