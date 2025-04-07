@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b4homifi8p4fa"]
+[gd_scene load_steps=35 format=3 uid="uid://b4homifi8p4fa"]
 
 [ext_resource type="Script" path="res://bomb.gd" id="1_c3k23"]
 [ext_resource type="Texture2D" uid="uid://b5nr0o54aiplg" path="res://BOM.BUM.png" id="1_mp1s1"]
@@ -203,6 +203,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rr44b"]
 radius = 14.4222
 
+[sub_resource type="Gradient" id="Gradient_kevjj"]
+offsets = PackedFloat32Array(0, 0.0034965, 0.230769, 0.367133, 0.646853)
+colors = PackedColorArray(1, 1, 1, 1, 0.965035, 0.965035, 0.965035, 1, 0.917645, 0.917645, 0.917645, 1, 0.482792, 0.482792, 0.482792, 1, 0.0424345, 0.0424345, 0.0424345, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1h0g0"]
+gradient = SubResource("Gradient_kevjj")
+fill = 1
+fill_from = Vector2(0.495726, 0.457265)
+
 [node name="Bomb" type="Area2D"]
 scale = Vector2(0.25, 0.25)
 collision_layer = 0
@@ -230,3 +239,9 @@ position = Vector2(4, -4)
 shape = SubResource("CircleShape2D_rr44b")
 
 [node name="InteractArea" parent="." instance=ExtResource("3_tbi3e")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(8, 4)
+scale = Vector2(2.25, 2)
+color = Color(0.404594, 1, 0.998016, 1)
+texture = SubResource("GradientTexture2D_1h0g0")

@@ -446,6 +446,7 @@ point_count = 14
 script = SubResource("GDScript_k0qt7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
 offset_left = -1280.0
 offset_top = -784.0
 offset_right = 3640.0
@@ -595,7 +596,7 @@ rotation = 1.5708
 player = NodePath("../../../../Player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.577008, 0.577009, 0.577008, 1)
+color = Color(0.400697, 0.400698, 0.400697, 1)
 
 [node name="InteractArea" parent="." instance=ExtResource("5_c11at")]
 position = Vector2(996, 110)
