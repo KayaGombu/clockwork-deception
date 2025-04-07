@@ -27,7 +27,6 @@ func _physics_process(delta: float) -> void:
 		
 		#running
 	if Input.is_action_pressed("Sprint"):
-		print("Running")
 		max_speed = sprint_speed
 	else:
 		max_speed = walk_speed

@@ -491,7 +491,7 @@ position = Vector2(1700, 366)
 position = Vector2(2672, 970)
 
 [node name="Bomb5" parent="." instance=ExtResource("6_tkps6")]
-position = Vector2(3215, 90)
+position = Vector2(3368, 408)
 
 [node name="Bomb6" parent="." instance=ExtResource("6_tkps6")]
 position = Vector2(170, 592)
@@ -607,7 +607,7 @@ position = Vector2(1701, 367)
 position = Vector2(2674, 972)
 
 [node name="InteractArea5" parent="." instance=ExtResource("5_c11at")]
-position = Vector2(3217, 88)
+position = Vector2(3370, 406)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 640)
