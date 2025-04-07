@@ -66,15 +66,14 @@ texture_hover = ExtResource("5_18avs")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 312.0
 offset_top = 160.0
 offset_right = 864.0
 offset_bottom = 269.0
-theme_override_fonts/normal_font = ExtResource("3_wn7fp")
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 100
+theme_override_fonts/font = ExtResource("3_wn7fp")
+theme_override_font_sizes/font_size = 103
 text = "Clockwork Deception"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
