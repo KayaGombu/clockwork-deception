@@ -7,7 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://54yicat8vwj6" path="res://interact_area.tscn" id="5_c11at"]
 [ext_resource type="PackedScene" uid="uid://b4homifi8p4fa" path="res://bomb.tscn" id="6_tkps6"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="7_qm70c"]
-[ext_resource type="Script" path="res://game_manager.gd" id="8_ajtwq"]
+
+[sub_resource type="GDScript" id="GDScript_k0qt7"]
+script/source = "extends Node2D
+# Called when the node enters the scene tree for the first time.
+var time 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	time = $Timer.time_left
+	$\"UI/Panel/TimerLabel\".text = str(floor(time))
+
+	
+"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -425,6 +436,7 @@ _data = {
 point_count = 14
 
 [node name="Main" type="Node2D"]
+script = SubResource("GDScript_k0qt7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1280.0
@@ -480,7 +492,7 @@ position = Vector2(3215, 90)
 [node name="Bomb6" parent="." instance=ExtResource("6_tkps6")]
 position = Vector2(170, 592)
 
-[node name="Player" parent="." instance=ExtResource("1_a42v6")]
+[node name="Player" parent="." instance=ExtResource("4_a42v6")]
 position = Vector2(3388, 272)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -603,7 +615,7 @@ script = ExtResource("7_qm70c")
 offset_left = 9.0
 offset_top = 13.0
 offset_right = 218.0
-offset_bottom = 81.0
+offset_bottom = 185.0
 
 [node name="SabotageLabel" type="Label" parent="UI/Panel"]
 layout_mode = 0
@@ -614,5 +626,14 @@ offset_bottom = 55.0
 theme_override_font_sizes/font_size = 30
 text = "Sabotages:"
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("8_ajtwq")
+[node name="TimerLabel" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 70.0
+offset_right = 211.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 180.0
+autostart = true

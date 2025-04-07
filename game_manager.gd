@@ -4,7 +4,8 @@ extends Node
 
 
 var sabotages = 0
-
+func _process(delta: float) -> void:
+	%TimerLabel.text = str(floor(%Timer.time_left))
 func add_point():
 	sabotages +=1
 	print(sabotages)

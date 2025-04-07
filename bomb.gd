@@ -3,7 +3,7 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var has_exploded = false
 
-@onready var game_manager = get_node("res://game_manager.gd")
+
 
 func _ready():
 	if animated_sprite_2d:
@@ -20,11 +20,6 @@ func interaction_interact():
 	has_exploded = true
 	print("Bomb triggered!")  
 	
-	if game_manager:
-		game_manager.add_point()
-		print("Point added!")  # Debugging: Check if the point is added correctly
-	else:
-		print("Error: GameManager not found!")
 
 
 	if animated_sprite_2d:
