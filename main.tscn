@@ -6,26 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="4_a42v6"]
 [ext_resource type="PackedScene" uid="uid://54yicat8vwj6" path="res://interact_area.tscn" id="5_c11at"]
 [ext_resource type="PackedScene" uid="uid://b4homifi8p4fa" path="res://bomb.tscn" id="6_tkps6"]
+[ext_resource type="Script" path="res://TimerUI.gd" id="7_78m1w"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="7_qm70c"]
-
-[sub_resource type="GDScript" id="GDScript_k0qt7"]
-script/source = "extends Node2D
-# Called when the node enters the scene tree for the first time.
-var time 
-var sabotage_count = 0
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
-func _process(delta: float) -> void:
-	time = $Timer.time_left
-	$\"UI/Panel/TimerLabel\".text = str(floor(time*2))
-	$UI/Panel/SabotageLabel.text = \"Sabotages:\" + str(sabotage_count)
-
-
-	
-func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file(\"res://gameover.tscn\")
-		
-"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
 
@@ -443,7 +425,7 @@ _data = {
 point_count = 14
 
 [node name="Main" type="Node2D"]
-script = SubResource("GDScript_k0qt7")
+script = ExtResource("7_78m1w")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.585062, 0.585062, 0.585062, 1)
