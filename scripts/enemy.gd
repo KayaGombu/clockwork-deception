@@ -64,6 +64,7 @@ func see_player():
 				print("player spotted")
 				break
 	if player_spotted: #once it spots the enemy, initate chase state
+		vision.color = (Color(1,0,0,0.5))
 		current_state = States.CHASE
 	else:
 		pass
@@ -82,6 +83,7 @@ func chase_player(delta: float) -> void:
 func stop_chase():
 #this function starts the timer and ends the chase state
 	current_state = States.RETURN
+	vision.color = Color(1,1,1)
 	nav_agent.target_position = get_parent().global_position
 		
 func patrol():
@@ -140,9 +142,6 @@ func _on_deaggro_range_body_exited(body: Node2D) -> void:
 	print("Exited:", body.name)
 	if body == player:
 		stop_chase()
-<<<<<<< HEAD
-		
-=======
 
 func _on_hearing_range_body_entered(body: Node2D) -> void:
 	if body == player:
@@ -152,4 +151,3 @@ func _on_hearing_range_body_entered(body: Node2D) -> void:
 func _on_hearing_range_body_exited(body: Node2D) -> void:
 	if body == player:
 		in_hearing_range = false
->>>>>>> main

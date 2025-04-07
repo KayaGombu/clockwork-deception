@@ -1,9 +1,9 @@
 [gd_scene load_steps=46 format=3 uid="uid://coc26dgpj7wd0"]
 
 [ext_resource type="Texture2D" uid="uid://bxlnlv7416cu7" path="res://4 BigSet.png" id="1_87opt"]
-[ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="1_a42v6"]
-[ext_resource type="Texture2D" uid="uid://clstvwk0mt5ke" path="res://pixil-frame-0 (2).png" id="1_jlda7"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
+[ext_resource type="Texture2D" uid="uid://clstvwk0mt5ke" path="res://pixil-frame-0 (2).png" id="3_jlda7"]
+[ext_resource type="PackedScene" uid="uid://dtrphj8cdvme6" path="res://player.tscn" id="4_a42v6"]
 [ext_resource type="PackedScene" uid="uid://54yicat8vwj6" path="res://interact_area.tscn" id="5_c11at"]
 [ext_resource type="PackedScene" uid="uid://b4homifi8p4fa" path="res://bomb.tscn" id="6_tkps6"]
 
@@ -429,7 +429,7 @@ offset_left = -1280.0
 offset_top = -784.0
 offset_right = 3640.0
 offset_bottom = 1968.0
-texture = ExtResource("1_jlda7")
+texture = ExtResource("3_jlda7")
 
 [node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
 scale = Vector2(3, 3)
@@ -475,7 +475,7 @@ position = Vector2(2672, 970)
 [node name="Bomb5" parent="." instance=ExtResource("6_tkps6")]
 position = Vector2(3215, 90)
 
-[node name="Player" parent="." instance=ExtResource("1_a42v6")]
+[node name="Player" parent="." instance=ExtResource("4_a42v6")]
 position = Vector2(3388, 272)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -554,12 +554,8 @@ position = Vector2(920, 232)
 rotation = -1.28679
 
 [node name="Enemy" parent="EnemyMovement/Enemy5Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-<<<<<<< HEAD
-rotation = 0.261799
-=======
 position = Vector2(0, 0)
 rotation = 1.5708
->>>>>>> main
 player = NodePath("../../../../Player")
 
 [node name="Enemy6Path" type="Path2D" parent="EnemyMovement"]
