@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clstvwk0mt5ke" path="res://pixil-frame-0 (2).png" id="1_jlda7"]
 [ext_resource type="PackedScene" uid="uid://dvgf16mg712qb" path="res://enemy.tscn" id="2_d6av0"]
 [ext_resource type="PackedScene" uid="uid://bso038wqmv1dd" path="res://sabotage_popup.tscn" id="4_djha4"]
-[ext_resource type="PackedScene" path="res://interact_area.tscn" id="5_c11at"]
+[ext_resource type="PackedScene" uid="uid://54yicat8vwj6" path="res://interact_area.tscn" id="5_c11at"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="7_qm70c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u7tjm"]
