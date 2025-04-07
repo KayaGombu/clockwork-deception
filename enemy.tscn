@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dvgf16mg712qb"]
+[gd_scene load_steps=33 format=3 uid="uid://dvgf16mg712qb"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wofkh"]
 [ext_resource type="Texture2D" uid="uid://dlrk5ii3fix65" path="res://icon.svg" id="2_kfs2v"]
@@ -202,6 +202,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hetd4"]
 size = Vector2(714, 628)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_svroc"]
+radius = 18.5
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(0, 16)
 scale = Vector2(0.5, 0.5)
@@ -239,14 +242,14 @@ texture = ExtResource("2_kfs2v")
 position = Vector2(8, -36)
 scale = Vector2(6.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_abhqh")
-animation = &"walk"
+animation = &"down"
 
 [node name="aggro" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Deaggro Range" type="Area2D" parent="aggro"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro/Deaggro Range"]
-position = Vector2(9, -18)
 scale = Vector2(1.75, 2)
 shape = SubResource("RectangleShape2D_hetd4")
 debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
@@ -256,11 +259,22 @@ debug_color = Color(0.879278, 0.179821, 0.709977, 0.42)
 [node name="PointLight2D" type="PointLight2D" parent="vision_pivot"]
 position = Vector2(10, -50)
 rotation = -3.14159
-scale = Vector2(0.150302, 0.156948)
+scale = Vector2(0.183794, 0.177871)
 shadow_enabled = true
 texture = ExtResource("3_57ff0")
 offset = Vector2(72.9275, 1224.86)
 
+[node name="HearingRange" type="Area2D" parent="."]
+position = Vector2(1.42109e-11, -3.8147e-06)
+rotation = -3.14159
+scale = Vector2(0.183794, 0.177871)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HearingRange"]
+scale = Vector2(80, 80)
+shape = SubResource("CircleShape2D_svroc")
+
 [connection signal="timeout" from="Navigation/recalcTimer" to="." method="_on_recalc_timer_timeout"]
 [connection signal="area_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_area_exited"]
 [connection signal="body_exited" from="aggro/Deaggro Range" to="." method="_on_deaggro_range_body_exited"]
+[connection signal="body_entered" from="HearingRange" to="." method="_on_hearing_range_body_entered"]
+[connection signal="body_exited" from="HearingRange" to="." method="_on_hearing_range_body_exited"]

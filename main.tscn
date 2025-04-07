@@ -473,12 +473,10 @@ curve = SubResource("Curve2D_tnltt")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyMovement/Enemy1Path"]
 position = Vector2(565.529, 458.941)
-rotation = -1.54831
-rotates = false
-cubic_interp = false
+rotation = -1.5708
 
 [node name="Enemy" parent="EnemyMovement/Enemy1Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-position = Vector2(72.8034, 62.0985)
+position = Vector2(-0.000458419, -0.000365257)
 rotation = 1.57079
 platform_wall_layers = 1
 player = NodePath("../../../../Player")
@@ -490,12 +488,11 @@ curve = SubResource("Curve2D_cvrp1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyMovement/Enemy2Path"]
 position = Vector2(-912, 400)
-rotation = 1.5708
-rotates = false
+rotation = -1.60304
 
 [node name="Enemy" parent="EnemyMovement/Enemy2Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
 position = Vector2(3.11532e-06, 3.8147e-06)
-rotation = -1.5708
+rotation = 1.5708
 scale = Vector2(0.8, 0.8)
 platform_wall_layers = 1
 player = NodePath("../../../../Player")
@@ -509,11 +506,10 @@ curve = SubResource("Curve2D_v7p0c")
 position = Vector2(-1595.92, 775.133)
 rotation = -2.88178
 scale = Vector2(2, 2)
-rotates = false
 
 [node name="Enemy" parent="EnemyMovement/Enemy3Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
 position = Vector2(-6.10352e-05, 2.28882e-05)
-rotation = 2.89725
+rotation = 1.5708
 player = NodePath("../../../../Player")
 SPEED = 140
 
@@ -523,10 +519,10 @@ curve = SubResource("Curve2D_cpcx8")
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyMovement/Enemy4Path"]
 position = Vector2(2528, 496)
 rotation = -0.0199973
-rotates = false
 
 [node name="Enemy" parent="EnemyMovement/Enemy4Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
-position = Vector2(-16.3166, 15.6769)
+position = Vector2(0, 0)
+rotation = 1.5708
 player = NodePath("../../../../Player")
 
 [node name="Enemy5Path" type="Path2D" parent="EnemyMovement"]
@@ -536,10 +532,10 @@ curve = SubResource("Curve2D_hyv8k")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyMovement/Enemy5Path"]
 position = Vector2(920, 232)
-rotation = -0.275576
-rotates = false
+rotation = -1.28679
 
 [node name="Enemy" parent="EnemyMovement/Enemy5Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
+position = Vector2(0, 0)
 rotation = 1.5708
 player = NodePath("../../../../Player")
 
@@ -549,9 +545,10 @@ curve = SubResource("Curve2D_1njg2")
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyMovement/Enemy6Path"]
 position = Vector2(2848, 112)
 rotation = -0.0232516
-rotates = false
 
 [node name="Enemy" parent="EnemyMovement/Enemy6Path/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("2_d6av0")]
+position = Vector2(0, 0)
+rotation = 1.5708
 player = NodePath("../../../../Player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
